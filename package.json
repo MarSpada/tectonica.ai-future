@@ -2,12 +2,15 @@
   "name": "tai-future",
   "version": "1.0.0",
   "description": "Movement Intelligence — Tectonica.AI prototype",
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "start": "node server.js",
     "dev": "npx serve . -l 3000"
   },
   "dependencies": {
-    "express": "^5.2.1",
+    "express": "^4.21.0",
     "openai": "^6.25.0",
     "serve": "^14.2.0"
   }
