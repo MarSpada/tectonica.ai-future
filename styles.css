@@ -45,11 +45,11 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 24px 16px 20px;
+  padding: 16px 16px 20px;
   position: fixed;
-  top: 0;
+  top: 48px;
   left: 0;
-  height: 100vh;
+  height: calc(100vh - 48px);
   overflow-y: auto;
   z-index: 100;
 }
@@ -359,10 +359,11 @@ body.chat-open .sidebar__chat-toggle {
 .chat-panel {
   --chat-panel-width: 280px;
   position: fixed;
-  top: 0;
+  top: 48px;
   left: var(--sidebar-width);
   width: var(--chat-panel-width);
-  height: 100vh;
+  height: calc(100vh - 48px);
+  border-top: none;
   background: var(--sidebar-bg);
   border-right: 1px solid var(--card-stroke);
   display: flex;
@@ -579,7 +580,7 @@ body.chat-open .bot-chat {
   margin-left: var(--sidebar-width);
   margin-right: var(--right-sidebar);
   flex: 1;
-  padding: 32px 36px 60px;
+  padding: 68px 36px 60px;
   min-height: 100vh;
   transition: margin-left .25s ease;
 }
@@ -593,23 +594,50 @@ body.chat-open .bot-chat {
   gap: 20px;
 }
 
-.main__logo-block {
+/* ─── Top Bar (persistent) ─── */
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 48px;
+  background: var(--card-bg);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 3px;
-  flex-shrink: 0;
-  margin-top: 8px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  z-index: 200;
 }
 
-.main__tectonica-logo {
-  height: 22px;
+.topbar__org {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.topbar__org-icon { flex-shrink: 0; }
+
+.topbar__org-name {
+  font-size: .85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.topbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.topbar__logo {
+  height: 20px;
   width: auto;
-  opacity: .55;
+  opacity: .6;
   filter: brightness(0) invert(1);
 }
 
-.main__powered-by {
+.topbar__tagline {
   font-size: .62rem;
   color: var(--text-muted);
   font-weight: 500;
@@ -627,9 +655,9 @@ body.chat-open .bot-chat {
 .right-sidebar {
   width: var(--right-sidebar);
   position: fixed;
-  top: 0;
+  top: 48px;
   right: 0;
-  height: 100vh;
+  height: calc(100vh - 48px);
   background: var(--sidebar-bg);
   border-left: 1px solid var(--card-stroke);
   padding: 28px 20px;
@@ -935,6 +963,7 @@ body.chat-open .bot-chat {
   flex-direction: column;
   height: 100vh;
   min-height: 100vh;
+  padding-top: 48px;
 }
 
 .bot-chat__header {
@@ -1275,7 +1304,7 @@ body.decisions-mode .decisions { display: flex !important; }
   flex: 1;
   display: none;
   flex-direction: column;
-  padding: 28px 40px;
+  padding: 68px 40px 28px;
   overflow-y: auto;
   height: 100vh;
 }
@@ -1366,7 +1395,7 @@ body.decisions-mode .decisions { display: flex !important; }
   flex: 1;
   display: none;
   flex-direction: column;
-  padding: 28px 40px;
+  padding: 68px 40px 28px;
   height: 100vh;
 }
 
@@ -1426,6 +1455,7 @@ body.decisions-mode .decisions { display: flex !important; }
   display: flex;
   height: 100vh;
   min-height: 100vh;
+  padding-top: 48px;
   transition: margin-left .25s ease;
 }
 

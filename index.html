@@ -14,20 +14,6 @@
   <!-- ═══════════ SIDEBAR ═══════════ -->
   <aside class="sidebar">
     <div class="sidebar__top">
-      <!-- Organization -->
-      <div class="sidebar__logo">
-        <div class="sidebar__logo-icon">
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-            <rect width="28" height="28" rx="6" fill="#FD883C"/>
-            <text x="14" y="19" text-anchor="middle" fill="#081028" font-family="Manrope" font-weight="700" font-size="14">P</text>
-          </svg>
-        </div>
-        <div class="sidebar__logo-text">
-          <span class="sidebar__brand">People's Movement</span>
-          <span class="sidebar__org">Organization</span>
-        </div>
-      </div>
-
       <!-- Search -->
       <div class="sidebar__search">
         <svg class="sidebar__search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -206,10 +192,6 @@
     <!-- Header -->
     <header class="main__header">
       <h1 class="main__title">What do you want to do today, Ned?</h1>
-      <div class="main__logo-block">
-        <img src="images/tectonica-ai-logo.svg" alt="Tectonica.AI" class="main__tectonica-logo">
-        <span class="main__powered-by">powered by Change Agent</span>
-      </div>
     </header>
 
     <!-- Bot Grid -->
@@ -1007,6 +989,23 @@
       </div>
     </div>
   </aside>
+
+  <!-- Top bar — always visible -->
+  <div class="topbar">
+    <div class="topbar__org">
+      <div class="topbar__org-icon">
+        <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
+          <rect width="28" height="28" rx="6" fill="#FD883C"/>
+          <text x="14" y="19" text-anchor="middle" fill="#081028" font-family="Manrope" font-weight="700" font-size="14">P</text>
+        </svg>
+      </div>
+      <span class="topbar__org-name">People's Movement</span>
+    </div>
+    <div class="topbar__brand">
+      <img src="images/tectonica-ai-logo.svg" alt="Tectonica.AI" class="topbar__logo">
+      <span class="topbar__tagline">powered by Change Agent</span>
+    </div>
+  </div>
 
   <script src="main.js"></script>
 </body>
