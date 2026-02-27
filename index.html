@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movement Intelligence — Tectonica.AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ═══════════ SIDEBAR ═══════════ -->
+  <aside class="sidebar">
+    <div class="sidebar__top">
+      <!-- Organization -->
+      <div class="sidebar__logo">
+        <div class="sidebar__logo-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <rect width="28" height="28" rx="6" fill="#FD883C"/>
+            <text x="14" y="19" text-anchor="middle" fill="#081028" font-family="Manrope" font-weight="700" font-size="14">P</text>
+          </svg>
+        </div>
+        <div class="sidebar__logo-text">
+          <span class="sidebar__brand">People's Movement</span>
+          <span class="sidebar__org">Organization</span>
+        </div>
+      </div>
+
+      <!-- Search -->
+      <div class="sidebar__search">
+        <svg class="sidebar__search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" placeholder="Search for..." class="sidebar__search-input">
+      </div>
+
+      <!-- Nav -->
+      <nav class="sidebar__nav">
+        <a href="#" class="sidebar__nav-item sidebar__nav-item--active">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          <div class="sidebar__nav-text">
+            <span class="sidebar__nav-label">Action Center</span>
+            <span class="sidebar__nav-sub">What do you want to do today?</span>
+          </div>
+        </a>
+        <a href="#" class="sidebar__nav-item" id="nav-coach">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <div class="sidebar__nav-text">
+            <span class="sidebar__nav-label">AI Campaign Coach</span>
+            <span class="sidebar__nav-sub">Talk to your campaign coach</span>
+          </div>
+        </a>
+        <a href="#" class="sidebar__nav-item" id="nav-scoreboard">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          <div class="sidebar__nav-text">
+            <span class="sidebar__nav-label">Scoreboard</span>
+            <span class="sidebar__nav-sub">Impact metrics</span>
+          </div>
+        </a>
+        <a href="#" class="sidebar__nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <div class="sidebar__nav-text">
+            <span class="sidebar__nav-label">Decision Making Tools</span>
+            <span class="sidebar__nav-sub">Collaborative decisions</span>
+          </div>
+        </a>
+      </nav>
+
+      <!-- Chat panel toggle -->
+      <button class="sidebar__chat-toggle" id="chat-panel-toggle">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <span>Leaders and Supporters Chat</span>
+        <svg class="sidebar__chat-toggle-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+
+      <!-- Projects (collapsed) -->
+      <div class="sidebar__section">
+        <button class="sidebar__section-toggle" data-section="projects">
+          <span>Projects</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+        <ul class="sidebar__section-list sidebar__section-list--collapsed" id="projects-list">
+          <li class="sidebar__chat-item">Voter Registration Drive</li>
+          <li class="sidebar__chat-item">Climate Rally 2026</li>
+          <li class="sidebar__chat-item">Town Hall Strategy</li>
+        </ul>
+      </div>
+
+      <!-- Chats -->
+      <div class="sidebar__section">
+        <button class="sidebar__section-toggle sidebar__section-toggle--open" data-section="chats">
+          <span>Chats</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <ul class="sidebar__section-list" id="chats-list">
+          <li class="sidebar__chat-item sidebar__chat-item--active">
+            Fundraising email draft
+            <button class="sidebar__chat-menu">...</button>
+          </li>
+          <li class="sidebar__chat-item">
+            Canvass route planning
+          </li>
+          <li class="sidebar__chat-item">
+            Event invite copy
+          </li>
+          <li class="sidebar__chat-item">
+            Volunteer onboarding flow
+          </li>
+          <li class="sidebar__chat-item">
+            Social media calendar
+          </li>
+          <li class="sidebar__chat-item">
+            Rally graphic request
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- User -->
+    <div class="sidebar__user">
+      <img src="images/Nd.jpeg" alt="Ned Howey" class="sidebar__user-avatar">
+      <div class="sidebar__user-info">
+        <span class="sidebar__user-name">Ned Howey</span>
+        <span class="sidebar__user-role">Organizer</span>
+      </div>
+      <button class="sidebar__settings" title="Settings">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ═══════════ CHAT PANEL ═══════════ -->
+  <aside class="chat-panel" id="chat-panel">
+    <div class="chat-panel__header">
+      <h2 class="chat-panel__title">Leaders and Supporters Chat</h2>
+      <button class="chat-panel__close" id="chat-panel-close">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="chat-panel__members">
+      <div class="chat-panel__member chat-panel__member--online">
+        <div class="chat-panel__avatar" style="background:#4E7CF6">S</div>
+        <div class="chat-panel__member-info">
+          <span class="chat-panel__member-name">Sarah Chen</span>
+          <span class="chat-panel__member-status">Online</span>
+        </div>
+      </div>
+      <div class="chat-panel__member chat-panel__member--online">
+        <div class="chat-panel__avatar" style="background:#05C168">M</div>
+        <div class="chat-panel__member-info">
+          <span class="chat-panel__member-name">Marcus Rivera</span>
+          <span class="chat-panel__member-status">Online</span>
+        </div>
+      </div>
+      <div class="chat-panel__member">
+        <div class="chat-panel__avatar" style="background:#A855F7">J</div>
+        <div class="chat-panel__member-info">
+          <span class="chat-panel__member-name">Jamie Okafor</span>
+          <span class="chat-panel__member-status">Away</span>
+        </div>
+      </div>
+      <div class="chat-panel__member">
+        <div class="chat-panel__avatar" style="background:#FD883C">L</div>
+        <div class="chat-panel__member-info">
+          <span class="chat-panel__member-name">Lisa Tran</span>
+          <span class="chat-panel__member-status">Offline</span>
+        </div>
+      </div>
+    </div>
+    <div class="chat-panel__messages">
+      <div class="chat-panel__msg">
+        <div class="chat-panel__msg-avatar" style="background:#4E7CF6">S</div>
+        <div class="chat-panel__msg-body">
+          <span class="chat-panel__msg-author">Sarah Chen</span>
+          <p>Just confirmed the venue for Saturday's rally. We're all set!</p>
+          <span class="chat-panel__msg-time">2:34 PM</span>
+        </div>
+      </div>
+      <div class="chat-panel__msg">
+        <div class="chat-panel__msg-avatar" style="background:#05C168">M</div>
+        <div class="chat-panel__msg-body">
+          <span class="chat-panel__msg-author">Marcus Rivera</span>
+          <p>Great work! I'll get the flyers distributed this afternoon.</p>
+          <span class="chat-panel__msg-time">2:41 PM</span>
+        </div>
+      </div>
+      <div class="chat-panel__msg">
+        <img src="images/Nd.jpeg" alt="Ned" class="chat-panel__msg-avatar">
+        <div class="chat-panel__msg-body">
+          <span class="chat-panel__msg-author">Ned Howey</span>
+          <p>Perfect. Let's sync at 5 to review the run-of-show.</p>
+          <span class="chat-panel__msg-time">2:45 PM</span>
+        </div>
+      </div>
+    </div>
+    <div class="chat-panel__input-area">
+      <input type="text" class="chat-panel__input" placeholder="Message your group...">
+      <button class="chat-panel__send">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ═══════════ MAIN ═══════════ -->
+  <main class="main">
+    <!-- Header -->
+    <header class="main__header">
+      <h1 class="main__title">What do you want to do today, Ned?</h1>
+      <div class="main__logo-block">
+        <img src="images/tectonica-ai-logo.svg" alt="Tectonica.AI" class="main__tectonica-logo">
+        <span class="main__powered-by">powered by Change Agent</span>
+      </div>
+    </header>
+
+    <!-- Bot Grid -->
+    <section class="bot-grid">
+
+      <!-- Category: Your Bots -->
+      <div class="category category--featured">
+        <div class="category__header">
+          <div class="category__icon category__icon--orange">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <h2 class="category__title">Your Bots</h2>
+        </div>
+        <div class="category__cards">
+          <div class="bot-card">
+            <div class="bot-card__inner">
+              <div class="bot-card__front">
+                <div class="bot-card__icon">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                </div>
+                <h3 class="bot-card__title">Visual Creation Bot</h3>
+              </div>
+              <div class="bot-card__back">
+                <p class="bot-card__desc">Design graphics, social cards, and visual assets aligned with your campaign identity.</p>
+              </div>
+            </div>
+          </div>
+          <div class="bot-card">
+            <div class="bot-card__inner">
+              <div class="bot-card__front">
+                <div class="bot-card__icon">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <h3 class="bot-card__title">Find a Place to Organize</h3>
+              </div>
+              <div class="bot-card__back">
+                <p class="bot-card__desc">Discover venues, community spaces, and locations ideal for meetings, rallies, and events.</p>
+              </div>
+            </div>
+          </div>
+          <div class="bot-card">
+            <div class="bot-card__inner">
+              <div class="bot-card__front">
+                <div class="bot-card__icon">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                </div>
+                <h3 class="bot-card__title">Tech Assessment Bot</h3>
+              </div>
+              <div class="bot-card__back">
+                <p class="bot-card__desc">Evaluate your tech stack, identify gaps, and get recommendations for campaign tools.</p>
+              </div>
+            </div>
+          </div>
+          <div class="bot-card">
+            <div class="bot-card__inner">
+              <div class="bot-card__front">
+                <div class="bot-card__icon">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                </div>
+                <h3 class="bot-card__title">Group Placement Bot</h3>
+                <span class="bot-card__subtitle">connects to CRM</span>
+              </div>
+              <div class="bot-card__back">
+                <p class="bot-card__desc">Match volunteers to the right teams and working groups based on skills and interests.</p>
+              </div>
+            </div>
+          </div>
+          <div class="bot-card">
+            <div class="bot-card__inner">
+              <div class="bot-card__front">
+                <div class="bot-card__icon">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                </div>
+                <h3 class="bot-card__title">Creating People Power</h3>
+                <span class="bot-card__subtitle">Knowledge Center Bot</span>
+              </div>
+              <div class="bot-card__back">
+                <p class="bot-card__desc">Access organising knowledge, training materials, and best practices for building people power.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category: Organizer & Group Leader Tools -->
+      <div class="category">
+        <div class="category__header">
+          <div class="category__icon category__icon--orange">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h2 class="category__title">Organizer & Group Leader Tools</h2>
+        </div>
+        <div class="category__cards">
+          <div class="bot-card">
+            <div class="bot-card__inner">
+              <div class="bot-card__front">
+                <div class="bot-card__icon">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                </div>
+                <h3 class="bot-card__title">Field / Canvassing Bot</h3>
+              </div>
+              <div class="bot-card__back">
+                <p class="bot-card__desc">Plan door-to-door routes, manage walk lists, and log canvass results in real time.</p>
+              </div>
+            </div>
+          </div>
+          <div class="bot-card">
+            <div class="bot-card__inner">
+              <div class="bot-card__front">
+                <div class="bot-card__icon">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+                </div>
+                <h3 class="bot-card__title">Relational Organizing Bot</h3>
+              </div>
+              <div class="bot-card__back">
+                <p class="bot-card__desc">Leverage personal networks to recruit, persuade, and mobilise through trusted relationships.</p>
+              </div>
+            </div>
+          </div>
+          <div class="bot-card">
+            <div class="bot-card__inner">
+              <div class="bot-card__front">
+                <div class="bot-card__icon">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                </div>
+                <h3 class="bot-card__title">Events Management Bot</h3>
+              </div>
+              <div class="bot-card__back">
+                <p class="bot-card__desc">Create events, send invites, track RSVPs, and manage day-of logistics seamlessly.</p>
+              </div>
+            </div>
+          </div>
+          <div class="bot-card">
+            <div class="bot-card__inner">
+              <div class="bot-card__front">
+                <div class="bot-card__icon">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+                <h3 class="bot-card__title">Relationship / Contacts Mng Bot</h3>
+              </div>
+              <div class="bot-card__back">
+                <p class="bot-card__desc">Organize supporter data, track interactions, and nurture relationships over time.</p>
+              </div>
+            </div>
+          </div>
+          <div class="bot-card">
+            <div class="bot-card__inner">
+              <div class="bot-card__front">
+                <div class="bot-card__icon">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+                </div>
+                <h3 class="bot-card__title">Local Strategy & Tactics Bot</h3>
+              </div>
+              <div class="bot-card__back">
+                <p class="bot-card__desc">Analyse local context and recommend tailored organizing strategies for your region.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category: Campaign Content & Production -->
+      <div class="category">
+        <div class="category__header">
+          <div class="category__icon category__icon--purple">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          </div>
+          <h2 class="category__title">Campaign Content & Production</h2>
+        </div>
+        <div class="category__cards">
+          <div class="bot-card">
+            <div class="bot-card__inner">
+              <div class="bot-card__front">
+                <div class="bot-card__icon">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                </div>
+                <h3 class="bot-card__title">Video Content Bot</h3>
+              </div>
+              <div class="bot-card__back">
+                <p class="bot-card__desc">Generate scripts, storyboards, and short-form video content for social campaigns.</p>
+              </div>
+            </div>
+          </div>
+          <div class="bot-card">
+            <div class="bot-card__inner">
+              <div class="bot-card__front">
+                <div class="bot-card__icon">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </div>
+                <h3 class="bot-card__title">Campaign & Local Microsites</h3>
+              </div>
+              <div class="bot-card__back">
+                <p class="bot-card__desc">Spin up branded landing pages and local campaign microsites in minutes.</p>
+              </div>
+            </div>
+          </div>
+          <div class="bot-card">
+            <div class="bot-card__inner">
+              <div class="bot-card__front">
+                <div class="bot-card__icon">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                </div>
+                <h3 class="bot-card__title">Distributed Ads Bot</h3>
+              </div>
+              <div class="bot-card__back">
+                <p class="bot-card__desc">Create, review, and distribute targeted ads across platforms with built-in approval flows.</p>
+              </div>
+            </div>
+          </div>
+          <div class="bot-card">
+            <div class="bot-card__inner">
+              <div class="bot-card__front">
+                <div class="bot-card__icon">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                </div>
+                <h3 class="bot-card__title">Tech Tools Use Bot</h3>
+              </div>
+              <div class="bot-card__back">
+                <p class="bot-card__desc">Get guidance on the best digital tools for your organizing needs and workflows.</p>
+              </div>
+            </div>
+          </div>
+          <div class="bot-card">
+            <div class="bot-card__inner">
+              <div class="bot-card__front">
+                <div class="bot-card__icon">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+                </div>
+                <h3 class="bot-card__title">Content Writing Bot</h3>
+              </div>
+              <div class="bot-card__back">
+                <p class="bot-card__desc">Draft emails, press releases, social posts, and supporter communications on brand.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category: Distributed Fundraising & Impact Tracking -->
+      <div class="category">
+        <div class="category__header">
+          <div class="category__icon category__icon--green">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <h2 class="category__title">Distributed Fundraising & Impact Tracking</h2>
+        </div>
+        <div class="category__cards">
+          <div class="bot-card">
+            <div class="bot-card__inner">
+              <div class="bot-card__front">
+                <div class="bot-card__icon">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+                </div>
+                <h3 class="bot-card__title">Recruitment Bot</h3>
+              </div>
+              <div class="bot-card__back">
+                <p class="bot-card__desc">Identify and onboard new supporters with personalised outreach and follow-up sequences.</p>
+              </div>
+            </div>
+          </div>
+          <div class="bot-card">
+            <div class="bot-card__inner">
+              <div class="bot-card__front">
+                <div class="bot-card__icon">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                </div>
+                <h3 class="bot-card__title">Distributed Fundraising Bot</h3>
+              </div>
+              <div class="bot-card__back">
+                <p class="bot-card__desc">Empower supporters to fundraise on your behalf with personal pages and peer-to-peer tools.</p>
+              </div>
+            </div>
+          </div>
+          <div class="bot-card">
+            <div class="bot-card__inner">
+              <div class="bot-card__front">
+                <div class="bot-card__icon">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                </div>
+                <h3 class="bot-card__title">Targeted Advocacy Bot</h3>
+              </div>
+              <div class="bot-card__back">
+                <p class="bot-card__desc">Run targeted pressure campaigns aimed at decision-makers with data-driven messaging.</p>
+              </div>
+            </div>
+          </div>
+          <div class="bot-card">
+            <div class="bot-card__inner">
+              <div class="bot-card__front">
+                <div class="bot-card__icon">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                </div>
+                <h3 class="bot-card__title">Scoreboard</h3>
+              </div>
+              <div class="bot-card__back">
+                <p class="bot-card__desc">Live dashboards for funds raised, engagement metrics, and impact benchmarks across teams.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category: Admin & Organizational Infrastructure -->
+      <div class="category">
+        <div class="category__header">
+          <div class="category__icon category__icon--blue">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          </div>
+          <h2 class="category__title">Admin & Organizational Infrastructure</h2>
+        </div>
+        <div class="category__cards">
+          <div class="bot-card">
+            <div class="bot-card__inner">
+              <div class="bot-card__front">
+                <div class="bot-card__icon">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                </div>
+                <h3 class="bot-card__title">Networks, Resources & Orgs</h3>
+              </div>
+              <div class="bot-card__back">
+                <p class="bot-card__desc">Map coalition networks, share resources, and coordinate across allied organisations.</p>
+              </div>
+            </div>
+          </div>
+          <div class="bot-card">
+            <div class="bot-card__inner">
+              <div class="bot-card__front">
+                <div class="bot-card__icon">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                </div>
+                <h3 class="bot-card__title">Data Analysis</h3>
+              </div>
+              <div class="bot-card__back">
+                <p class="bot-card__desc">Query your movement data with natural language and surface actionable insights instantly.</p>
+              </div>
+            </div>
+          </div>
+          <div class="bot-card">
+            <div class="bot-card__inner">
+              <div class="bot-card__front">
+                <div class="bot-card__icon">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <h3 class="bot-card__title">Roles, Permissions & Assignments</h3>
+              </div>
+              <div class="bot-card__back">
+                <p class="bot-card__desc">Manage who can do what across your organisation with granular role-based controls.</p>
+              </div>
+            </div>
+          </div>
+          <div class="bot-card">
+            <div class="bot-card__inner">
+              <div class="bot-card__front">
+                <div class="bot-card__icon">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                </div>
+                <h3 class="bot-card__title">Tracking & Analytics Dashboards</h3>
+              </div>
+              <div class="bot-card__back">
+                <p class="bot-card__desc">Monitor KPIs, benchmark performance, and track progress across all campaigns.</p>
+              </div>
+            </div>
+          </div>
+          <div class="bot-card">
+            <div class="bot-card__inner">
+              <div class="bot-card__front">
+                <div class="bot-card__icon">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <h3 class="bot-card__title">Membership Activity Systems</h3>
+              </div>
+              <div class="bot-card__back">
+                <p class="bot-card__desc">Track member engagement, participation history, and automate re-engagement workflows.</p>
+              </div>
+            </div>
+          </div>
+          <div class="bot-card">
+            <div class="bot-card__inner">
+              <div class="bot-card__front">
+                <div class="bot-card__icon">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+                <h3 class="bot-card__title">Decision-Making Environments</h3>
+              </div>
+              <div class="bot-card__back">
+                <p class="bot-card__desc">Facilitate democratic decision-making with structured deliberation and voting tools (ICAs).</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- ═══════════ BOT CHAT VIEW ═══════════ -->
+  <section class="bot-chat" id="bot-chat" style="display:none">
+    <!-- Chat header -->
+    <header class="bot-chat__header">
+      <button class="bot-chat__back" id="chat-back" title="Back to Action Center">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      </button>
+      <div class="bot-chat__header-info">
+        <div class="bot-chat__header-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        </div>
+        <div>
+          <h2 class="bot-chat__header-title">Visual Creation Bot</h2>
+          <span class="bot-chat__header-status">Online</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Messages -->
+    <div class="bot-chat__messages" id="chat-messages">
+      <div class="bot-chat__msg bot-chat__msg--user">
+        <div class="bot-chat__msg-content">
+          <p>Hello, I'd like to create a graphic</p>
+          <span class="bot-chat__msg-time">Just now</span>
+        </div>
+        <img src="images/Nd.jpeg" alt="Ned" class="bot-chat__msg-avatar bot-chat__msg-avatar--user">
+      </div>
+      <div class="bot-chat__msg bot-chat__msg--bot">
+        <div class="bot-chat__msg-avatar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        </div>
+        <div class="bot-chat__msg-content">
+          <span class="bot-chat__msg-name">Visual Creation Bot</span>
+          <p>How would you like to get started on this?</p>
+          <ol class="bot-chat__options">
+            <li>Share any related documents you already have?</li>
+            <li>Talk through your ideas so far? <span class="bot-chat__option-hint">(Hit the mic button below to actually speak)</span></li>
+            <li>Brainstorm and explore with me?</li>
+            <li>Just jump into it? <span class="bot-chat__option-hint">(You have a clear idea, and little time — although I can't promise the best results)</span></li>
+          </ol>
+          <p class="bot-chat__remember">Remember: You can always learn more about the best ways to work with me if you are new, or just want to understand better. Just let me know.</p>
+          <div class="bot-chat__actions">
+            <button class="bot-chat__action-btn" title="Edit">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            </button>
+            <button class="bot-chat__action-btn" title="Copy">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            </button>
+            <button class="bot-chat__action-btn" title="Listen">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+            </button>
+            <button class="bot-chat__action-btn" title="Like">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+            </button>
+            <button class="bot-chat__action-btn" title="Dislike">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 15V19a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3H10z"/><path d="M17 2h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"/></svg>
+            </button>
+            <button class="bot-chat__action-btn" title="Regenerate">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+            </button>
+          </div>
+          <span class="bot-chat__msg-time">Just now</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Input -->
+    <div class="bot-chat__input-area">
+      <input type="text" class="bot-chat__input" placeholder="Type a message...">
+      <button class="bot-chat__mic" title="Voice input">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+      </button>
+      <button class="bot-chat__send">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ═══════════ AI CAMPAIGN COACH ═══════════ -->
+  <section class="coach" id="coach-view" style="display:none">
+    <div class="coach__main">
+      <!-- Coach header -->
+      <header class="coach__header">
+        <button class="coach__back" id="coach-back" title="Back to Action Center">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        </button>
+        <div class="coach__header-info">
+          <div class="coach__header-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div>
+            <h2 class="coach__header-title">AI Campaign Coach</h2>
+            <span class="coach__header-status">Online</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Messages -->
+      <div class="coach__messages">
+        <div class="coach__msg coach__msg--bot">
+          <div class="coach__msg-avatar">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div class="coach__msg-content">
+            <span class="coach__msg-name">AI Campaign Coach</span>
+            <p>Hey Ned! I've been reviewing your campaign metrics. Your volunteer engagement is up 12% this week, which is great momentum heading into the rally.</p>
+            <p>I have a few strategic recommendations. What would you like to focus on?</p>
+            <ol class="coach__options">
+              <li>Review this week's outreach performance</li>
+              <li>Plan the next phase of voter contact</li>
+              <li>Optimise our messaging based on recent data</li>
+              <li>Prepare talking points for the rally</li>
+            </ol>
+            <span class="coach__msg-time">Just now</span>
+          </div>
+        </div>
+        <div class="coach__msg coach__msg--user">
+          <div class="coach__msg-content">
+            <p>Let's review outreach performance and then prep rally talking points.</p>
+            <span class="coach__msg-time">Just now</span>
+          </div>
+          <img src="images/Nd.jpeg" alt="Ned" class="coach__msg-avatar coach__msg-avatar--user">
+        </div>
+        <div class="coach__msg coach__msg--bot">
+          <div class="coach__msg-avatar">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div class="coach__msg-content">
+            <span class="coach__msg-name">AI Campaign Coach</span>
+            <p>Here's your outreach snapshot for this week:</p>
+            <div class="coach__stats-grid">
+              <div class="coach__stat">
+                <span class="coach__stat-value">847</span>
+                <span class="coach__stat-label">Doors knocked</span>
+                <span class="coach__stat-change coach__stat-change--up">+18%</span>
+              </div>
+              <div class="coach__stat">
+                <span class="coach__stat-value">2,340</span>
+                <span class="coach__stat-label">Calls made</span>
+                <span class="coach__stat-change coach__stat-change--up">+7%</span>
+              </div>
+              <div class="coach__stat">
+                <span class="coach__stat-value">156</span>
+                <span class="coach__stat-label">New sign-ups</span>
+                <span class="coach__stat-change coach__stat-change--up">+31%</span>
+              </div>
+              <div class="coach__stat">
+                <span class="coach__stat-value">68%</span>
+                <span class="coach__stat-label">Contact rate</span>
+                <span class="coach__stat-change coach__stat-change--down">-2%</span>
+              </div>
+            </div>
+            <p>Your door-to-door is outperforming targets. The dip in contact rate suggests we may need to refresh phone lists. I'll pull updated numbers from the CRM.</p>
+            <span class="coach__msg-time">Just now</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Input -->
+      <div class="coach__input-area">
+        <input type="text" class="coach__input" placeholder="Ask your campaign coach...">
+        <button class="coach__send">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Coaching Context Sidebar -->
+    <aside class="coach__sidebar">
+      <div class="coach__sidebar-section">
+        <h3 class="coach__sidebar-heading">Campaign Goals</h3>
+        <div class="coach__goal">
+          <div class="coach__goal-header">
+            <span class="coach__goal-name">Voter contacts</span>
+            <span class="coach__goal-progress">73%</span>
+          </div>
+          <div class="coach__goal-bar">
+            <div class="coach__goal-fill" style="width:73%"></div>
+          </div>
+          <span class="coach__goal-detail">7,300 / 10,000</span>
+        </div>
+        <div class="coach__goal">
+          <div class="coach__goal-header">
+            <span class="coach__goal-name">Volunteer recruitment</span>
+            <span class="coach__goal-progress">56%</span>
+          </div>
+          <div class="coach__goal-bar">
+            <div class="coach__goal-fill coach__goal-fill--blue" style="width:56%"></div>
+          </div>
+          <span class="coach__goal-detail">280 / 500</span>
+        </div>
+        <div class="coach__goal">
+          <div class="coach__goal-header">
+            <span class="coach__goal-name">Fundraising target</span>
+            <span class="coach__goal-progress">64%</span>
+          </div>
+          <div class="coach__goal-bar">
+            <div class="coach__goal-fill coach__goal-fill--orange" style="width:64%"></div>
+          </div>
+          <span class="coach__goal-detail">$128K / $200K</span>
+        </div>
+      </div>
+
+      <div class="coach__sidebar-section">
+        <h3 class="coach__sidebar-heading">Strategy Notes</h3>
+        <div class="coach__note">
+          <span class="coach__note-date">Feb 25</span>
+          <p>Focus canvassing on Precinct 4 — highest undecided voter density.</p>
+        </div>
+        <div class="coach__note">
+          <span class="coach__note-date">Feb 22</span>
+          <p>A/B test rally invite: urgency framing vs. community framing.</p>
+        </div>
+        <div class="coach__note">
+          <span class="coach__note-date">Feb 19</span>
+          <p>Shift phone banking hours to 5-8 PM — contact rate up 22%.</p>
+        </div>
+      </div>
+
+      <div class="coach__sidebar-section">
+        <h3 class="coach__sidebar-heading">Upcoming</h3>
+        <div class="coach__event">
+          <div class="coach__event-dot"></div>
+          <div class="coach__event-info">
+            <span class="coach__event-name">Climate Rally</span>
+            <span class="coach__event-date">Sat, Mar 1 · 2:00 PM</span>
+          </div>
+        </div>
+        <div class="coach__event">
+          <div class="coach__event-dot coach__event-dot--blue"></div>
+          <div class="coach__event-info">
+            <span class="coach__event-name">Phone bank training</span>
+            <span class="coach__event-date">Mon, Mar 3 · 6:00 PM</span>
+          </div>
+        </div>
+        <div class="coach__event">
+          <div class="coach__event-dot coach__event-dot--purple"></div>
+          <div class="coach__event-info">
+            <span class="coach__event-name">Strategy review</span>
+            <span class="coach__event-date">Wed, Mar 5 · 10:00 AM</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </section>
+
+  <!-- ═══════════ RIGHT SIDEBAR ═══════════ -->
+  <aside class="right-sidebar">
+    <div class="right-sidebar__header">
+      <h2 class="right-sidebar__title">Campaign Progress</h2>
+      <a href="#" class="right-sidebar__more" id="scoreboard-link">More</a>
+    </div>
+
+    <!-- Stat Widgets -->
+    <div class="widget">
+      <div class="widget__icon widget__icon--green">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      </div>
+      <div class="widget__content">
+        <span class="widget__label">Funds Raised</span>
+        <span class="widget__value">$128,430</span>
+        <span class="widget__change widget__change--up">+12.5%</span>
+      </div>
+    </div>
+    <div class="widget">
+      <div class="widget__icon widget__icon--blue">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <div class="widget__content">
+        <span class="widget__label">People Mobilised</span>
+        <span class="widget__value">14,208</span>
+        <span class="widget__change widget__change--up">+8.3%</span>
+      </div>
+    </div>
+    <div class="widget">
+      <div class="widget__icon widget__icon--purple">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <div class="widget__content">
+        <span class="widget__label">Actions Taken</span>
+        <span class="widget__value">52,741</span>
+        <span class="widget__change widget__change--up">+23.1%</span>
+      </div>
+    </div>
+    <div class="widget">
+      <div class="widget__icon widget__icon--orange">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <div class="widget__content">
+        <span class="widget__label">Active Campaigns</span>
+        <span class="widget__value">37</span>
+        <span class="widget__change widget__change--up">+4</span>
+      </div>
+    </div>
+  </aside>
+
+  <script src="main.js"></script>
+</body>
+</html>
