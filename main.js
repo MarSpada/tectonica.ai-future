@@ -4,7 +4,7 @@
 
 // Helper: close all special views
 function closeAllViews() {
-  document.body.classList.remove('chat-mode', 'coach-mode', 'scoreboard-mode', 'decisions-mode');
+  document.body.classList.remove('chat-mode', 'coach-mode', 'scoreboard-mode', 'decisions-mode', 'editor-open');
   document.getElementById('bot-chat').style.display = 'none';
   document.getElementById('coach-view').style.display = 'none';
   document.getElementById('scoreboard-view').style.display = 'none';
@@ -166,3 +166,17 @@ document.querySelectorAll('.sidebar__nav-item').forEach(item => {
     closeAllViews();
   });
 });
+
+// Image editor toggle
+const editorToggle = document.getElementById('editor-toggle');
+const editorClose = document.getElementById('editor-close');
+if (editorToggle) {
+  editorToggle.addEventListener('click', () => {
+    document.body.classList.toggle('editor-open');
+  });
+}
+if (editorClose) {
+  editorClose.addEventListener('click', () => {
+    document.body.classList.remove('editor-open');
+  });
+}
