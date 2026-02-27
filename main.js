@@ -2,6 +2,15 @@
    TAI Future — Movement Intelligence Prototype
    ═══════════════════════════════════════════ */
 
+// Helper: close all special views
+function closeAllViews() {
+  document.body.classList.remove('chat-mode', 'coach-mode', 'scoreboard-mode', 'decisions-mode');
+  document.getElementById('bot-chat').style.display = 'none';
+  document.getElementById('coach-view').style.display = 'none';
+  document.getElementById('scoreboard-view').style.display = 'none';
+  document.getElementById('decisions-view').style.display = 'none';
+}
+
 // Sidebar nav active state
 document.querySelectorAll('.sidebar__nav-item').forEach(item => {
   item.addEventListener('click', e => {
@@ -36,16 +45,19 @@ document.querySelectorAll('.sidebar__chat-item').forEach(item => {
   });
 });
 
-// "More" link in right sidebar → activate Scoreboard nav
+// "More" link in right sidebar → open Scoreboard view
 const scoreboardLink = document.getElementById('scoreboard-link');
 if (scoreboardLink) {
   scoreboardLink.addEventListener('click', e => {
     e.preventDefault();
+    closeAllViews();
     const scoreNav = document.getElementById('nav-scoreboard');
     if (scoreNav) {
       document.querySelector('.sidebar__nav-item--active')?.classList.remove('sidebar__nav-item--active');
       scoreNav.classList.add('sidebar__nav-item--active');
     }
+    document.body.classList.add('scoreboard-mode');
+    document.getElementById('scoreboard-view').style.display = 'flex';
   });
 }
 
@@ -68,6 +80,7 @@ document.querySelectorAll('.bot-card').forEach(card => {
   card.addEventListener('click', () => {
     const title = card.querySelector('.bot-card__title')?.textContent;
     if (title === 'Visual Creation Bot') {
+      closeAllViews();
       document.body.classList.add('chat-mode');
       document.getElementById('bot-chat').style.display = 'flex';
     } else {
@@ -80,8 +93,7 @@ document.querySelectorAll('.bot-card').forEach(card => {
 const chatBack = document.getElementById('chat-back');
 if (chatBack) {
   chatBack.addEventListener('click', () => {
-    document.body.classList.remove('chat-mode');
-    document.getElementById('bot-chat').style.display = 'none';
+    closeAllViews();
   });
 }
 
@@ -89,8 +101,28 @@ if (chatBack) {
 const coachBack = document.getElementById('coach-back');
 if (coachBack) {
   coachBack.addEventListener('click', () => {
-    document.body.classList.remove('coach-mode');
-    document.getElementById('coach-view').style.display = 'none';
+    closeAllViews();
+  });
+}
+
+// Scoreboard back button — return to dashboard
+const scoreboardBack = document.getElementById('scoreboard-back');
+if (scoreboardBack) {
+  scoreboardBack.addEventListener('click', () => {
+    closeAllViews();
+    // Re-activate Action Center nav
+    document.querySelector('.sidebar__nav-item--active')?.classList.remove('sidebar__nav-item--active');
+    document.querySelector('.sidebar__nav-item')?.classList.add('sidebar__nav-item--active');
+  });
+}
+
+// Decisions back button — return to dashboard
+const decisionsBack = document.getElementById('decisions-back');
+if (decisionsBack) {
+  decisionsBack.addEventListener('click', () => {
+    closeAllViews();
+    document.querySelector('.sidebar__nav-item--active')?.classList.remove('sidebar__nav-item--active');
+    document.querySelector('.sidebar__nav-item')?.classList.add('sidebar__nav-item--active');
   });
 }
 
@@ -99,26 +131,38 @@ const coachNav = document.getElementById('nav-coach');
 if (coachNav) {
   coachNav.addEventListener('click', e => {
     e.preventDefault();
-    // Close bot chat if open
-    document.body.classList.remove('chat-mode');
-    document.getElementById('bot-chat').style.display = 'none';
-    // Open coach
+    closeAllViews();
     document.body.classList.add('coach-mode');
     document.getElementById('coach-view').style.display = 'flex';
   });
 }
 
-// Other nav items — go back to dashboard (skip coach nav which has its own handler)
+// Scoreboard nav — open scoreboard view
+const scoreboardNav = document.getElementById('nav-scoreboard');
+if (scoreboardNav) {
+  scoreboardNav.addEventListener('click', e => {
+    e.preventDefault();
+    closeAllViews();
+    document.body.classList.add('scoreboard-mode');
+    document.getElementById('scoreboard-view').style.display = 'flex';
+  });
+}
+
+// Decision Making Tools nav — open decisions view
+const decisionsNav = document.getElementById('nav-decisions');
+if (decisionsNav) {
+  decisionsNav.addEventListener('click', e => {
+    e.preventDefault();
+    closeAllViews();
+    document.body.classList.add('decisions-mode');
+    document.getElementById('decisions-view').style.display = 'flex';
+  });
+}
+
+// Other nav items — go back to dashboard (skip items with their own handlers)
 document.querySelectorAll('.sidebar__nav-item').forEach(item => {
   item.addEventListener('click', () => {
-    if (item.id === 'nav-coach') return;
-    if (document.body.classList.contains('chat-mode')) {
-      document.body.classList.remove('chat-mode');
-      document.getElementById('bot-chat').style.display = 'none';
-    }
-    if (document.body.classList.contains('coach-mode')) {
-      document.body.classList.remove('coach-mode');
-      document.getElementById('coach-view').style.display = 'none';
-    }
+    if (['nav-coach', 'nav-scoreboard', 'nav-decisions'].includes(item.id)) return;
+    closeAllViews();
   });
 });

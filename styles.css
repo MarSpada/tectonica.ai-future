@@ -1259,6 +1259,166 @@ body.coach-mode .main { display: none; }
 body.coach-mode .right-sidebar { display: none; }
 body.coach-mode .coach { display: flex; }
 
+/* State: scoreboard mode */
+body.scoreboard-mode .main { display: none; }
+body.scoreboard-mode .right-sidebar { display: none; }
+body.scoreboard-mode .scoreboard { display: flex !important; }
+
+/* State: decisions mode */
+body.decisions-mode .main { display: none; }
+body.decisions-mode .right-sidebar { display: none; }
+body.decisions-mode .decisions { display: flex !important; }
+
+/* ─── Scoreboard View ─── */
+.scoreboard {
+  margin-left: var(--sidebar-width);
+  flex: 1;
+  display: none;
+  flex-direction: column;
+  padding: 28px 40px;
+  overflow-y: auto;
+  height: 100vh;
+}
+
+.scoreboard__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.scoreboard__back {
+  background: none; border: none; color: var(--text-muted); cursor: pointer;
+  padding: 6px; border-radius: 8px;
+}
+.scoreboard__back:hover { background: rgba(255,255,255,.06); color: var(--text-primary); }
+
+.scoreboard__header-icon {
+  width: 40px; height: 40px; border-radius: 10px;
+  background: rgba(78, 124, 246, .12); color: var(--accent-blue);
+  display: flex; align-items: center; justify-content: center;
+}
+.scoreboard__header-icon svg { stroke: currentColor; }
+
+.scoreboard__title {
+  font-size: 1.25rem; font-weight: 700; color: var(--text-primary);
+}
+
+.scoreboard__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.scoreboard__card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.scoreboard__card-icon {
+  width: 44px; height: 44px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 8px;
+}
+.scoreboard__card-icon svg { stroke: currentColor; }
+.scoreboard__card-icon--green  { background: rgba(5,193,104,.12);  color: var(--accent-green); }
+.scoreboard__card-icon--blue   { background: rgba(78,124,246,.12); color: var(--accent-blue); }
+.scoreboard__card-icon--purple { background: rgba(168,85,247,.12); color: var(--accent-purple); }
+.scoreboard__card-icon--orange { background: rgba(253,136,60,.12); color: var(--accent-orange); }
+
+.scoreboard__card-label {
+  font-size: .75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: .5px;
+}
+
+.scoreboard__card-value {
+  font-size: 2rem; font-weight: 800; color: var(--text-primary); line-height: 1;
+}
+
+.scoreboard__card-change {
+  font-size: .75rem; font-weight: 600;
+}
+.scoreboard__card-change--up { color: var(--accent-green); }
+
+.scoreboard__card-bar {
+  height: 6px; border-radius: 3px; background: rgba(255,255,255,.06); margin-top: 8px;
+}
+
+.scoreboard__card-fill {
+  height: 100%; border-radius: 3px;
+}
+.scoreboard__card-fill--green  { background: var(--accent-green); }
+.scoreboard__card-fill--blue   { background: var(--accent-blue); }
+.scoreboard__card-fill--purple { background: var(--accent-purple); }
+.scoreboard__card-fill--orange { background: var(--accent-orange); }
+
+.scoreboard__card-goal {
+  font-size: .7rem; color: var(--text-muted); margin-top: 2px;
+}
+
+/* ─── Decision Making Tools View ─── */
+.decisions {
+  margin-left: var(--sidebar-width);
+  flex: 1;
+  display: none;
+  flex-direction: column;
+  padding: 28px 40px;
+  height: 100vh;
+}
+
+.decisions__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.decisions__back {
+  background: none; border: none; color: var(--text-muted); cursor: pointer;
+  padding: 6px; border-radius: 8px;
+}
+.decisions__back:hover { background: rgba(255,255,255,.06); color: var(--text-primary); }
+
+.decisions__header-icon {
+  width: 40px; height: 40px; border-radius: 10px;
+  background: rgba(253,136,60,.12); color: var(--accent-orange);
+  display: flex; align-items: center; justify-content: center;
+}
+.decisions__header-icon svg { stroke: currentColor; }
+
+.decisions__title {
+  font-size: 1.25rem; font-weight: 700; color: var(--text-primary);
+}
+
+.decisions__coming-soon {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  text-align: center;
+  opacity: .7;
+}
+
+.decisions__icon-large {
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+.decisions__icon-large svg { stroke: currentColor; }
+
+.decisions__coming-title {
+  font-size: 1.5rem; font-weight: 700; color: var(--text-primary);
+}
+
+.decisions__coming-text {
+  font-size: .9rem; color: var(--text-secondary); max-width: 400px; line-height: 1.6;
+}
+
 /* ─── AI Campaign Coach View ─── */
 .coach {
   margin-left: var(--sidebar-width);

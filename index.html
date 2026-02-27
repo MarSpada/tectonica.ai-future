@@ -57,7 +57,7 @@
             <span class="sidebar__nav-sub">Impact metrics</span>
           </div>
         </a>
-        <a href="#" class="sidebar__nav-item">
+        <a href="#" class="sidebar__nav-item" id="nav-decisions">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           <div class="sidebar__nav-text">
             <span class="sidebar__nav-label">Decision Making Tools</span>
@@ -852,6 +852,113 @@
   </section>
 
   <!-- ═══════════ RIGHT SIDEBAR ═══════════ -->
+  <!-- ═══════════ SCOREBOARD VIEW ═══════════ -->
+  <section class="scoreboard" id="scoreboard-view" style="display:none">
+    <header class="scoreboard__header">
+      <button class="scoreboard__back" id="scoreboard-back" title="Back to Action Center">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="scoreboard__header-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      </div>
+      <h2 class="scoreboard__title">Scoreboard</h2>
+    </header>
+
+    <div class="scoreboard__grid">
+      <!-- Funds Raised -->
+      <div class="scoreboard__card">
+        <div class="scoreboard__card-icon scoreboard__card-icon--green">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <span class="scoreboard__card-label">Funds Raised</span>
+        <span class="scoreboard__card-value">$128,430</span>
+        <span class="scoreboard__card-change scoreboard__card-change--up">+12.5% vs last month</span>
+        <div class="scoreboard__card-bar"><div class="scoreboard__card-fill scoreboard__card-fill--green" style="width:72%"></div></div>
+        <span class="scoreboard__card-goal">Goal: $180,000</span>
+      </div>
+
+      <!-- People Mobilised -->
+      <div class="scoreboard__card">
+        <div class="scoreboard__card-icon scoreboard__card-icon--blue">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <span class="scoreboard__card-label">People Mobilised</span>
+        <span class="scoreboard__card-value">14,208</span>
+        <span class="scoreboard__card-change scoreboard__card-change--up">+8.3% vs last month</span>
+        <div class="scoreboard__card-bar"><div class="scoreboard__card-fill scoreboard__card-fill--blue" style="width:57%"></div></div>
+        <span class="scoreboard__card-goal">Goal: 25,000</span>
+      </div>
+
+      <!-- Actions Taken -->
+      <div class="scoreboard__card">
+        <div class="scoreboard__card-icon scoreboard__card-icon--purple">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <span class="scoreboard__card-label">Actions Taken</span>
+        <span class="scoreboard__card-value">52,741</span>
+        <span class="scoreboard__card-change scoreboard__card-change--up">+23.1% vs last month</span>
+        <div class="scoreboard__card-bar"><div class="scoreboard__card-fill scoreboard__card-fill--purple" style="width:88%"></div></div>
+        <span class="scoreboard__card-goal">Goal: 60,000</span>
+      </div>
+
+      <!-- Active Campaigns -->
+      <div class="scoreboard__card">
+        <div class="scoreboard__card-icon scoreboard__card-icon--orange">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <span class="scoreboard__card-label">Active Campaigns</span>
+        <span class="scoreboard__card-value">37</span>
+        <span class="scoreboard__card-change scoreboard__card-change--up">+4 this month</span>
+        <div class="scoreboard__card-bar"><div class="scoreboard__card-fill scoreboard__card-fill--orange" style="width:74%"></div></div>
+        <span class="scoreboard__card-goal">Goal: 50</span>
+      </div>
+
+      <!-- Volunteers Registered -->
+      <div class="scoreboard__card">
+        <div class="scoreboard__card-icon scoreboard__card-icon--green">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg>
+        </div>
+        <span class="scoreboard__card-label">Volunteers Registered</span>
+        <span class="scoreboard__card-value">3,482</span>
+        <span class="scoreboard__card-change scoreboard__card-change--up">+156 this week</span>
+        <div class="scoreboard__card-bar"><div class="scoreboard__card-fill scoreboard__card-fill--green" style="width:64%"></div></div>
+        <span class="scoreboard__card-goal">Goal: 5,500</span>
+      </div>
+
+      <!-- Events Held -->
+      <div class="scoreboard__card">
+        <div class="scoreboard__card-icon scoreboard__card-icon--blue">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <span class="scoreboard__card-label">Events Held</span>
+        <span class="scoreboard__card-value">124</span>
+        <span class="scoreboard__card-change scoreboard__card-change--up">+18 this month</span>
+        <div class="scoreboard__card-bar"><div class="scoreboard__card-fill scoreboard__card-fill--blue" style="width:83%"></div></div>
+        <span class="scoreboard__card-goal">Goal: 150</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ DECISION MAKING TOOLS VIEW ═══════════ -->
+  <section class="decisions" id="decisions-view" style="display:none">
+    <header class="decisions__header">
+      <button class="decisions__back" id="decisions-back" title="Back to Action Center">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="decisions__header-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </div>
+      <h2 class="decisions__title">Decision Making Tools</h2>
+    </header>
+    <div class="decisions__coming-soon">
+      <div class="decisions__icon-large">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <h3 class="decisions__coming-title">Coming Soon</h3>
+      <p class="decisions__coming-text">Collaborative decision-making tools are being developed to help your movement make faster, more inclusive choices together.</p>
+    </div>
+  </section>
+
   <aside class="right-sidebar">
     <div class="right-sidebar__header">
       <h2 class="right-sidebar__title">Campaign Progress</h2>
