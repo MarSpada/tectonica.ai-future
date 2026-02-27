@@ -19,6 +19,9 @@ function getOpenAI() {
 app.use(express.json());
 app.use(express.static(path.join(__dirname)));
 
+// ─── Health check (Railway) ───
+app.get('/health', (req, res) => res.status(200).json({ status: 'ok' }));
+
 // ─── Chat API endpoint (streaming) ───
 app.post('/api/chat', async (req, res) => {
   const { messages } = req.body;
