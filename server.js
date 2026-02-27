@@ -62,7 +62,7 @@ app.post('/api/chat', async (req, res) => {
 });
 
 // ─── Start server ───
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`[MI] Movement Intelligence server running on port ${PORT}`);
   if (!getOpenAI()) {
     console.warn('[MI] ⚠️  No OpenAI API key found. Set the "openai" environment variable.');
