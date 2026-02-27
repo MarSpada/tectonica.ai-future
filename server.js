@@ -1,26 +1,31 @@
 const express = require('express');
 const path = require('path');
-const OpenAI = require('openai');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// OpenAI client — lazy init (uses 'openai' env var on Railway)
+// OpenAI client — fully lazy init (don't require until needed)
 let openai = null;
 function getOpenAI() {
   if (openai) return openai;
   const apiKey = process.env.openai || process.env.OPENAI_API_KEY;
   if (!apiKey) return null;
+  const OpenAI = require('openai');
   openai = new OpenAI({ apiKey });
   return openai;
 }
 
 // Middleware
 app.use(express.json());
-app.use(express.static(path.join(__dirname)));
+app.use(express.static(path.join(__dirname), { index: 'index.html' }));
 
 // ─── Health check (Railway) ───
 app.get('/health', (req, res) => res.status(200).json({ status: 'ok' }));
+
+// ─── Explicit root route fallback ───
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
 
 // ─── Chat API endpoint (streaming) ───
 app.post('/api/chat', async (req, res) => {
@@ -67,8 +72,16 @@ app.post('/api/chat', async (req, res) => {
 // ─── Start server ───
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`[MI] Movement Intelligence server running on port ${PORT}`);
-  if (!getOpenAI()) {
+  console.log(`[MI] Serving static files from: ${__dirname}`);
+  if (!process.env.openai && !process.env.OPENAI_API_KEY) {
     console.warn('[MI] ⚠️  No OpenAI API key found. Set the "openai" environment variable.');
-    console.warn('[MI]    Chat will return errors until the key is configured.');
   }
+});
+
+// Catch uncaught errors so the process doesn't silently die
+process.on('uncaughtException', (err) => {
+  console.error('[MI] Uncaught exception:', err);
+});
+process.on('unhandledRejection', (err) => {
+  console.error('[MI] Unhandled rejection:', err);
 });
