@@ -555,11 +555,18 @@ body::after {
   grid-column: 1 / -1;
 }
 
-/* Horizontal people list (for full-width directory) */
-.rs-widget__people-list--horizontal {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 6px 14px;
+/* Tall widget — spans 3 rows in left column */
+.rs-widget--tall {
+  grid-row: span 3;
+  display: flex;
+  flex-direction: column;
+}
+.rs-widget--tall .rs-widget__people-list {
+  flex: 1;
+  overflow-y: auto;
+}
+.rs-widget--tall .rs-widget__recruit-btn {
+  margin-top: auto;
 }
 
 /* ─── Per-Widget Colors ─── */
