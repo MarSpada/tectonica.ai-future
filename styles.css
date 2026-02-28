@@ -465,6 +465,9 @@ body::after {
   color: var(--text-primary);
   margin-bottom: 16px;
   letter-spacing: -.01em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 /* ─── Widget Grid (2-column) ─── */
@@ -472,6 +475,7 @@ body::after {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 14px;
+  grid-auto-flow: dense;
 }
 
 /* ─── Widget Base ─── */
@@ -479,6 +483,8 @@ body::after {
   border-radius: var(--radius-lg);
   padding: 16px;
   font-family: var(--font);
+  position: relative;
+  overflow: hidden;
 }
 
 .rs-widget__title {
@@ -546,36 +552,140 @@ body::after {
   flex-shrink: 0;
 }
 
-/* ─── Left & Right Columns ─── */
-.rs-widget--left-col,
-.rs-widget--right-col {
+/* ─── Widget Size System (iPhone-style) ─── */
+.rs-widget[data-widget-size="small"]  { grid-column: span 1; }
+.rs-widget[data-widget-size="medium"] { grid-column: span 1; }
+.rs-widget[data-widget-size="large"]  { grid-column: 1 / -1; }
+.rs-widget--actions { grid-column: 1 / -1 !important; }
+
+/* Content visibility layers */
+.rs-widget__content--compact  { display: block; }
+.rs-widget__content--default  { display: block; }
+.rs-widget__content--expanded { display: none; }
+
+.rs-widget[data-widget-size="small"] .rs-widget__content--default  { display: none; }
+.rs-widget[data-widget-size="small"] .rs-widget__content--expanded { display: none; }
+.rs-widget[data-widget-size="large"] .rs-widget__content--expanded { display: block; }
+
+/* Resize handle */
+.rs-widget__resize-handle {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  border: none;
+  background: rgba(0, 0, 0, .06);
+  color: rgba(0, 0, 0, .25);
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity .2s, background .15s, color .15s;
+  z-index: 5;
   padding: 0;
-  background: none;
 }
 
-.rs-widget__pair {
+.rs-widget:hover .rs-widget__resize-handle { opacity: 1; }
+.rs-widget__resize-handle:hover {
+  background: rgba(124, 58, 237, .15);
+  color: var(--accent-purple);
+}
+
+/* Edit mode — all handles visible + jiggle */
+.right-sidebar--editing .rs-widget__resize-handle { opacity: 1; }
+
+@keyframes widget-jiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25%      { transform: rotate(-0.4deg); }
+  75%      { transform: rotate(0.4deg); }
+}
+
+.right-sidebar--editing .rs-widget[data-widget-size] {
+  animation: widget-jiggle .3s ease-in-out 1;
+}
+
+/* Edit toggle button */
+.rs-edit-toggle {
+  background: rgba(124, 58, 237, .1);
+  color: var(--accent-purple);
+  border: 1px solid rgba(124, 58, 237, .15);
+  border-radius: var(--radius-sm);
+  padding: 3px 10px;
+  font-family: var(--font);
+  font-size: .65rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: auto;
+  transition: background .15s;
+}
+
+.rs-edit-toggle:hover {
+  background: rgba(124, 58, 237, .2);
+}
+
+/* Size indicator pill */
+.rs-widget__size-indicator {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  font-size: .55rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  background: rgba(0, 0, 0, .06);
+  color: rgba(0, 0, 0, .3);
+  padding: 2px 5px;
+  border-radius: 4px;
+  opacity: 0;
+  transition: opacity .2s;
+  pointer-events: none;
+}
+
+.rs-widget:hover .rs-widget__size-indicator,
+.right-sidebar--editing .rs-widget__size-indicator { opacity: 1; }
+
+/* Compact status (for small widgets) */
+.rs-widget__compact-status {
   display: flex;
-  gap: 10px;
+  align-items: center;
+  gap: 6px;
 }
 
-.rs-widget__pair > .rs-widget__sub {
-  flex: 1;
-  min-width: 0;
+.rs-widget__compact-text {
+  font-size: .72rem;
+  font-weight: 600;
+  color: rgba(0, 0, 0, .5);
 }
 
-/* ─── Sub-widgets (cards inside columns) ─── */
-.rs-widget__sub {
-  border-radius: var(--radius);
-  padding: 14px;
+.rs-widget__compact-badge {
+  display: inline-block;
+  background: rgba(124, 58, 237, .1);
+  color: var(--accent-purple);
+  font-size: .62rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 10px;
 }
 
-/* Money goal */
-.rs-widget__sub--money {
-  background: #fff3e0;
+/* Expanded note text */
+.rs-widget__expanded-note {
+  font-size: .72rem;
+  color: rgba(0, 0, 0, .5);
+  line-height: 1.4;
+  margin-top: 6px;
 }
+
+/* ─── Per-Widget Colors ─── */
+.rs-widget--money        { background: #fff3e0; }
+.rs-widget--people       { background: #e0f2fe; }
+.rs-widget--hours        { background: #ecfdf5; }
+.rs-widget--systems      { background: #f8fafc; }
+.rs-widget--approval     { background: #fdf2f8; }
+.rs-widget--directory    { background: #fff; }
+.rs-widget--chat-preview { background: #f5f3ff; }
 
 .rs-widget__big-number {
   font-size: 1.8rem;
@@ -666,9 +776,6 @@ body::after {
 }
 
 /* People goal */
-.rs-widget__sub--people {
-  background: #e0f2fe;
-}
 
 .rs-widget__stat {
   display: flex;
@@ -688,20 +795,6 @@ body::after {
   font-size: .72rem;
   font-weight: 600;
   color: rgba(0, 0, 0, .50);
-}
-
-/* Hours volunteered */
-.rs-widget__sub--hours {
-  background: #ecfdf5;
-}
-
-/* New members alert */
-.rs-widget__sub--alert {
-  background: #fef3c7;
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  padding: 12px 14px;
 }
 
 .rs-widget__alert-icon {
@@ -772,14 +865,6 @@ body::after {
 }
 
 /* Group Directory */
-.rs-widget__sub--directory {
-  background: #fff;
-}
-
-.rs-widget__sub--directory .rs-widget__people-list {
-  max-height: 130px;
-  overflow-y: auto;
-}
 
 .rs-widget__people-list {
   list-style: none;
@@ -821,10 +906,6 @@ body::after {
 }
 
 /* ─── Connected Systems ─── */
-.rs-widget__sub--systems {
-  background: #f8fafc;
-}
-
 .rs-widget__systems-row {
   display: flex;
   gap: 8px;
@@ -881,10 +962,6 @@ body::after {
 }
 
 /* ─── Submit for Approval ─── */
-.rs-widget__sub--approval {
-  background: #fdf2f8;
-}
-
 .rs-widget__approval-desc {
   font-size: .76rem;
   color: rgba(0, 0, 0, .55);
@@ -920,10 +997,6 @@ body::after {
 }
 
 /* ─── Chat Preview ─── */
-.rs-widget__sub--chat-preview {
-  background: #f5f3ff;
-}
-
 .rs-widget__chat-messages {
   display: flex;
   flex-direction: column;
