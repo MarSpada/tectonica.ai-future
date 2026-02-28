@@ -4,9 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Movement Intelligence — Tectonica.AI</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Google Sans loaded via @font-face in styles.css -->
   <link rel="stylesheet" href="styles.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.6/Sortable.min.js" defer></script>
@@ -29,80 +27,27 @@
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
           <div class="sidebar__nav-text">
             <span class="sidebar__nav-label">Action Center</span>
-            <span class="sidebar__nav-sub">What do you want to do today?</span>
           </div>
         </a>
         <a href="#" class="sidebar__nav-item" id="nav-coach">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
           <div class="sidebar__nav-text">
             <span class="sidebar__nav-label">AI Campaign Coach</span>
-            <span class="sidebar__nav-sub">Talk to your campaign coach</span>
           </div>
         </a>
-        <a href="#" class="sidebar__nav-item" id="nav-scoreboard">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        <a href="#" class="sidebar__nav-item" id="nav-media">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
           <div class="sidebar__nav-text">
-            <span class="sidebar__nav-label">Scoreboard</span>
-            <span class="sidebar__nav-sub">Impact metrics</span>
-          </div>
-        </a>
-        <a href="#" class="sidebar__nav-item" id="nav-decisions">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          <div class="sidebar__nav-text">
-            <span class="sidebar__nav-label">Decision Making Tools</span>
-            <span class="sidebar__nav-sub">Collaborative decisions</span>
+            <span class="sidebar__nav-label">Group Media</span>
           </div>
         </a>
       </nav>
 
-      <!-- Chat panel toggle -->
-      <button class="sidebar__chat-toggle" id="chat-panel-toggle">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        <span>Leaders and Supporters Chat</span>
-        <svg class="sidebar__chat-toggle-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      <!-- Chat button (in sidebar) -->
+      <button class="sidebar__chat-btn" id="floating-chat-btn" title="Leaders & Organizers Chat">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <span>Leaders &amp; Organizers</span>
       </button>
-
-      <!-- Projects (collapsed) -->
-      <div class="sidebar__section">
-        <button class="sidebar__section-toggle" data-section="projects">
-          <span>Projects</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-        </button>
-        <ul class="sidebar__section-list sidebar__section-list--collapsed" id="projects-list">
-          <li class="sidebar__chat-item">Voter Registration Drive</li>
-          <li class="sidebar__chat-item">Climate Rally 2026</li>
-          <li class="sidebar__chat-item">Town Hall Strategy</li>
-        </ul>
-      </div>
-
-      <!-- Chats -->
-      <div class="sidebar__section">
-        <button class="sidebar__section-toggle sidebar__section-toggle--open" data-section="chats">
-          <span>Chats</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <ul class="sidebar__section-list" id="chats-list">
-          <li class="sidebar__chat-item sidebar__chat-item--active">
-            Fundraising email draft
-            <button class="sidebar__chat-menu">...</button>
-          </li>
-          <li class="sidebar__chat-item">
-            Canvass route planning
-          </li>
-          <li class="sidebar__chat-item">
-            Event invite copy
-          </li>
-          <li class="sidebar__chat-item">
-            Volunteer onboarding flow
-          </li>
-          <li class="sidebar__chat-item">
-            Social media calendar
-          </li>
-          <li class="sidebar__chat-item">
-            Rally graphic request
-          </li>
-        </ul>
-      </div>
     </div>
 
 
@@ -232,32 +177,40 @@
           <h2 class="category__title">Your Bots</h2>
         </div>
         <div class="category__cards">
-          <div class="bot-card">
-            <img class="bot-card__img bot-card__img--lg" src="images/01-visualcreation.png" alt="Visual Creation Bot">
-            <div class="bot-card__overlay"><p class="bot-card__desc">Design graphics, social cards, and visual assets aligned with your campaign identity.</p></div>
-            <h3 class="bot-card__title">Visual Creation Bot</h3>
+          <div class="bot-card" data-category="content">
+            <div class="bot-card__circle">
+              <img src="images/bot avatars/01-graphic-creation.png" alt="Graphic Creation Bot" class="bot-card__avatar">
+            </div>
+            <h3 class="bot-card__title">Graphic Creation Bot</h3>
+            <div class="bot-card__overlay"><p>Design graphics, social media cards, posters, and visual assets for your campaign</p></div>
           </div>
-          <div class="bot-card">
-            <img class="bot-card__img" src="images/05-field canvassing.png" alt="Find a Place to Organize">
-            <div class="bot-card__overlay"><p class="bot-card__desc">Discover venues, community spaces, and locations ideal for meetings, rallies, and events.</p></div>
+          <div class="bot-card" data-category="organizer">
+            <div class="bot-card__circle">
+              <img src="images/bot avatars/02-find-a-place.png" alt="" class="bot-card__avatar">
+            </div>
             <h3 class="bot-card__title">Find a Place to Organize</h3>
+            <div class="bot-card__overlay"><p>Discover venues, community spaces, and locations for meetings, rallies, and events</p></div>
           </div>
-          <div class="bot-card">
-            <img class="bot-card__img" src="images/04-tech expert.png" alt="Tech Assessment Bot">
-            <div class="bot-card__overlay"><p class="bot-card__desc">Evaluate your tech stack, identify gaps, and get recommendations for campaign tools.</p></div>
+          <div class="bot-card" data-category="content">
+            <div class="bot-card__circle">
+              <img src="images/bot avatars/03-tech-assessment.png" alt="" class="bot-card__avatar">
+            </div>
             <h3 class="bot-card__title">Tech Assessment Bot</h3>
+            <div class="bot-card__overlay"><p>Evaluate your tech stack, identify gaps, and get tool recommendations</p></div>
           </div>
-          <div class="bot-card">
-            <img class="bot-card__img" src="images/07-local strategy.png" alt="Group Placement Bot">
-            <div class="bot-card__overlay"><p class="bot-card__desc">Match volunteers to the right teams and working groups based on skills and interests.</p></div>
+          <div class="bot-card" data-category="organizer">
+            <div class="bot-card__circle">
+              <img src="images/bot avatars/04-group-placement.png" alt="" class="bot-card__avatar">
+            </div>
             <h3 class="bot-card__title">Group Placement Bot</h3>
-            <span class="bot-card__subtitle">connects to CRM</span>
+            <div class="bot-card__overlay"><p>Match volunteers to the right teams based on skills, interests, and availability</p></div>
           </div>
-          <div class="bot-card">
-            <img class="bot-card__img" src="images/10-people power.png" alt="Creating People Power">
-            <div class="bot-card__overlay"><p class="bot-card__desc">Access organising knowledge, training materials, and best practices for building people power.</p></div>
+          <div class="bot-card" data-category="organizer">
+            <div class="bot-card__circle">
+              <img src="images/bot avatars/05-creating-people-power.png" alt="" class="bot-card__avatar">
+            </div>
             <h3 class="bot-card__title">Creating People Power</h3>
-            <span class="bot-card__subtitle">Knowledge Center Bot</span>
+            <div class="bot-card__overlay"><p>Access organizing knowledge, training materials, and movement building best practices</p></div>
           </div>
         </div>
         <button class="category__carousel-btn category__carousel-btn--left" id="carousel-left">
@@ -278,29 +231,39 @@
         </div>
         <div class="category__cards">
           <div class="bot-card">
-            <img class="bot-card__img" src="images/22-canvassing.png" alt="Field / Canvassing Bot">
-            <div class="bot-card__overlay"><p class="bot-card__desc">Plan door-to-door routes, manage walk lists, and log canvass results in real time.</p></div>
+            <div class="bot-card__circle">
+              <img src="images/bot avatars/06-field-canvassing.png" alt="" class="bot-card__avatar">
+            </div>
             <h3 class="bot-card__title">Field / Canvassing Bot</h3>
+            <div class="bot-card__overlay"><p>Plan door-to-door routes, manage walk lists, and log canvass results</p></div>
           </div>
           <div class="bot-card">
-            <img class="bot-card__img" src="images/11-relational organizing.png" alt="Relational Organizing Bot">
-            <div class="bot-card__overlay"><p class="bot-card__desc">Leverage personal networks to recruit, persuade, and mobilise through trusted relationships.</p></div>
+            <div class="bot-card__circle">
+              <img src="images/bot avatars/07-relational-organizing.png" alt="" class="bot-card__avatar">
+            </div>
             <h3 class="bot-card__title">Relational Organizing Bot</h3>
+            <div class="bot-card__overlay"><p>Leverage personal networks to recruit, persuade, and mobilise through trusted relationships</p></div>
           </div>
           <div class="bot-card">
-            <img class="bot-card__img" src="images/06-event management.png" alt="Events Management Bot">
-            <div class="bot-card__overlay"><p class="bot-card__desc">Create events, send invites, track RSVPs, and manage day-of logistics seamlessly.</p></div>
+            <div class="bot-card__circle">
+              <img src="images/bot avatars/08-events-management.png" alt="" class="bot-card__avatar">
+            </div>
             <h3 class="bot-card__title">Events Management Bot</h3>
+            <div class="bot-card__overlay"><p>Create events, send invites, track RSVPs, and manage day-of logistics</p></div>
           </div>
           <div class="bot-card">
-            <img class="bot-card__img" src="images/12-contacts management.png" alt="Relationship / Contacts Mng Bot">
-            <div class="bot-card__overlay"><p class="bot-card__desc">Organize supporter data, track interactions, and nurture relationships over time.</p></div>
+            <div class="bot-card__circle">
+              <img src="images/bot avatars/09-relationship-contacts.png" alt="" class="bot-card__avatar">
+            </div>
             <h3 class="bot-card__title">Relationship / Contacts Mng Bot</h3>
+            <div class="bot-card__overlay"><p>Manage contact databases, track interactions, and maintain supporter relationships</p></div>
           </div>
           <div class="bot-card">
-            <img class="bot-card__img" src="images/02-strategy.png" alt="Local Strategy &amp; Tactics Bot">
-            <div class="bot-card__overlay"><p class="bot-card__desc">Analyse local context and recommend tailored organizing strategies for your region.</p></div>
+            <div class="bot-card__circle">
+              <img src="images/bot avatars/10-local-strategy.png" alt="" class="bot-card__avatar">
+            </div>
             <h3 class="bot-card__title">Local Strategy & Tactics Bot</h3>
+            <div class="bot-card__overlay"><p>Develop local campaign strategies, identify targets, and plan tactical actions</p></div>
           </div>
         </div>
       </div>
@@ -315,29 +278,39 @@
         </div>
         <div class="category__cards">
           <div class="bot-card">
-            <img class="bot-card__img" src="images/08-video bot.png" alt="Video Content Bot">
-            <div class="bot-card__overlay"><p class="bot-card__desc">Generate scripts, storyboards, and short-form video content for social campaigns.</p></div>
+            <div class="bot-card__circle">
+              <img src="images/bot avatars/11-video-content.png" alt="" class="bot-card__avatar">
+            </div>
             <h3 class="bot-card__title">Video Content Bot</h3>
+            <div class="bot-card__overlay"><p>Create compelling video content — scripts, storyboards, editing, and distribution</p></div>
           </div>
           <div class="bot-card">
-            <img class="bot-card__img" src="images/09-tech tools bot.png" alt="Campaign &amp; Local Microsites">
-            <div class="bot-card__overlay"><p class="bot-card__desc">Spin up branded landing pages and local campaign microsites in minutes.</p></div>
+            <div class="bot-card__circle">
+              <img src="images/bot avatars/12-campaign-microsites.png" alt="" class="bot-card__avatar">
+            </div>
             <h3 class="bot-card__title">Campaign & Local Microsites</h3>
+            <div class="bot-card__overlay"><p>Create and manage campaign websites and local landing pages</p></div>
           </div>
           <div class="bot-card">
-            <img class="bot-card__img" src="images/14-distributed ads.png" alt="Distributed Ads Bot">
-            <div class="bot-card__overlay"><p class="bot-card__desc">Create, review, and distribute targeted ads across platforms with built-in approval flows.</p></div>
+            <div class="bot-card__circle">
+              <img src="images/bot avatars/13-distributed-ads.png" alt="" class="bot-card__avatar">
+            </div>
             <h3 class="bot-card__title">Distributed Ads Bot</h3>
+            <div class="bot-card__overlay"><p>Create, review, and distribute advertising content across platforms</p></div>
           </div>
           <div class="bot-card">
-            <img class="bot-card__img" src="images/09-tech tools bot.png" alt="Tech Tools Use Bot">
-            <div class="bot-card__overlay"><p class="bot-card__desc">Get guidance on the best digital tools for your organizing needs and workflows.</p></div>
+            <div class="bot-card__circle">
+              <img src="images/bot avatars/14-tech-tools.png" alt="" class="bot-card__avatar">
+            </div>
             <h3 class="bot-card__title">Tech Tools Use Bot</h3>
+            <div class="bot-card__overlay"><p>Learn and effectively use technology tools for your campaigns</p></div>
           </div>
           <div class="bot-card">
-            <img class="bot-card__img" src="images/13-content creation.png" alt="Content Writing Bot">
-            <div class="bot-card__overlay"><p class="bot-card__desc">Draft emails, press releases, social posts, and supporter communications on brand.</p></div>
+            <div class="bot-card__circle">
+              <img src="images/bot avatars/15-content-writing.png" alt="" class="bot-card__avatar">
+            </div>
             <h3 class="bot-card__title">Content Writing Bot</h3>
+            <div class="bot-card__overlay"><p>Write emails, social posts, press releases, speeches, and talking points</p></div>
           </div>
         </div>
       </div>
@@ -352,24 +325,32 @@
         </div>
         <div class="category__cards">
           <div class="bot-card">
-            <img class="bot-card__img" src="images/16-recruitment.png" alt="Recruitment Bot">
-            <div class="bot-card__overlay"><p class="bot-card__desc">Identify and onboard new supporters with personalised outreach and follow-up sequences.</p></div>
+            <div class="bot-card__circle">
+              <img src="images/bot avatars/16-recruitment.png" alt="" class="bot-card__avatar">
+            </div>
             <h3 class="bot-card__title">Recruitment Bot</h3>
+            <div class="bot-card__overlay"><p>Recruit new volunteers, members, and supporters with pitches and onboarding</p></div>
           </div>
           <div class="bot-card">
-            <img class="bot-card__img" src="images/18-distributed fundraising.png" alt="Distributed Fundraising Bot">
-            <div class="bot-card__overlay"><p class="bot-card__desc">Empower supporters to fundraise on your behalf with personal pages and peer-to-peer tools.</p></div>
+            <div class="bot-card__circle">
+              <img src="images/bot avatars/17-distributed-fundraising.png" alt="" class="bot-card__avatar">
+            </div>
             <h3 class="bot-card__title">Distributed Fundraising Bot</h3>
+            <div class="bot-card__overlay"><p>Plan and execute distributed fundraising campaigns and track progress</p></div>
           </div>
           <div class="bot-card">
-            <img class="bot-card__img" src="images/17-targeted advocacy.png" alt="Targeted Advocacy Bot">
-            <div class="bot-card__overlay"><p class="bot-card__desc">Run targeted pressure campaigns aimed at decision-makers with data-driven messaging.</p></div>
+            <div class="bot-card__circle">
+              <img src="images/bot avatars/18-targeted-advocacy.png" alt="" class="bot-card__avatar">
+            </div>
             <h3 class="bot-card__title">Targeted Advocacy Bot</h3>
+            <div class="bot-card__overlay"><p>Plan targeted advocacy — identify decision-makers and coordinate pressure</p></div>
           </div>
           <div class="bot-card">
-            <img class="bot-card__img bot-card__img--md" src="images/19-scoreboard.png" alt="Scoreboard">
-            <div class="bot-card__overlay"><p class="bot-card__desc">Live dashboards for funds raised, engagement metrics, and impact benchmarks across teams.</p></div>
+            <div class="bot-card__circle">
+              <img src="images/bot avatars/19-scoreboard.png" alt="" class="bot-card__avatar">
+            </div>
             <h3 class="bot-card__title">Scoreboard</h3>
+            <div class="bot-card__overlay"><p>Track and visualize campaign metrics — funds, people, actions, and engagement</p></div>
           </div>
         </div>
       </div>
@@ -384,34 +365,46 @@
         </div>
         <div class="category__cards">
           <div class="bot-card">
-            <img class="bot-card__img" src="images/23-networks.png" alt="Networks, Resources &amp; Orgs">
-            <div class="bot-card__overlay"><p class="bot-card__desc">Map coalition networks, share resources, and coordinate across allied organisations.</p></div>
+            <div class="bot-card__circle">
+              <img src="images/bot avatars/20-networks-resources.png" alt="" class="bot-card__avatar">
+            </div>
             <h3 class="bot-card__title">Networks, Resources & Orgs</h3>
+            <div class="bot-card__overlay"><p>Connect with allied organizations, shared resources, and coalition networks</p></div>
           </div>
           <div class="bot-card">
-            <img class="bot-card__img" src="images/15-data analysis.png" alt="Data Analysis">
-            <div class="bot-card__overlay"><p class="bot-card__desc">Query your movement data with natural language and surface actionable insights instantly.</p></div>
+            <div class="bot-card__circle">
+              <img src="images/bot avatars/21-data-analysis.png" alt="" class="bot-card__avatar">
+            </div>
             <h3 class="bot-card__title">Data Analysis</h3>
+            <div class="bot-card__overlay"><p>Analyze voter files, survey results, and engagement metrics for insights</p></div>
           </div>
           <div class="bot-card">
-            <img class="bot-card__img bot-card__img--md" src="images/20-rols and permissions.png" alt="Roles, Permissions &amp; Assignments">
-            <div class="bot-card__overlay"><p class="bot-card__desc">Manage who can do what across your organisation with granular role-based controls.</p></div>
+            <div class="bot-card__circle">
+              <img src="images/bot avatars/22-roles-permissions.png" alt="" class="bot-card__avatar">
+            </div>
             <h3 class="bot-card__title">Roles, Permissions & Assignments</h3>
+            <div class="bot-card__overlay"><p>Manage team structure, assign roles, and track task completion</p></div>
           </div>
           <div class="bot-card">
-            <img class="bot-card__img" src="images/24-analytics.png" alt="Tracking &amp; Analytics Dashboards">
-            <div class="bot-card__overlay"><p class="bot-card__desc">Monitor KPIs, benchmark performance, and track progress across all campaigns.</p></div>
+            <div class="bot-card__circle">
+              <img src="images/bot avatars/23-tracking-analytics.png" alt="" class="bot-card__avatar">
+            </div>
             <h3 class="bot-card__title">Tracking & Analytics Dashboards</h3>
+            <div class="bot-card__overlay"><p>Set up and interpret analytics dashboards for campaign tracking</p></div>
           </div>
           <div class="bot-card">
-            <img class="bot-card__img" src="images/25-membership.png" alt="Membership Activity Systems">
-            <div class="bot-card__overlay"><p class="bot-card__desc">Track member engagement, participation history, and automate re-engagement workflows.</p></div>
+            <div class="bot-card__circle">
+              <img src="images/bot avatars/24-membership-activity.png" alt="" class="bot-card__avatar">
+            </div>
             <h3 class="bot-card__title">Membership Activity Systems</h3>
+            <div class="bot-card__overlay"><p>Manage membership records, track activity, and identify engagement opportunities</p></div>
           </div>
           <div class="bot-card">
-            <img class="bot-card__img" src="images/21-Decision making.png" alt="Decision-Making Environments">
-            <div class="bot-card__overlay"><p class="bot-card__desc">Facilitate democratic decision-making with structured deliberation and voting tools.</p></div>
+            <div class="bot-card__circle">
+              <img src="images/bot avatars/25-decision-making.png" alt="" class="bot-card__avatar">
+            </div>
             <h3 class="bot-card__title">Decision-Making Environments</h3>
+            <div class="bot-card__overlay"><p>Facilitate collaborative decision-making from proposals to implementation</p></div>
           </div>
         </div>
       </div>
@@ -429,7 +422,7 @@
       <div class="bot-chat__header-info">
         <img class="bot-chat__header-avatar" id="bot-chat-avatar" src="images/01-visualcreation.png" alt="Bot avatar">
         <div>
-          <h2 class="bot-chat__header-title">Visual Creation Bot</h2>
+          <h2 class="bot-chat__header-title">Graphic Creation Bot</h2>
           <span class="bot-chat__header-status">Online</span>
         </div>
       </div>
@@ -457,7 +450,7 @@
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
             </div>
             <div class="bot-chat__msg-content">
-              <span class="bot-chat__msg-name">Visual Creation Bot</span>
+              <span class="bot-chat__msg-name">Graphic Creation Bot</span>
               <p>How would you like to get started on this?</p>
               <ol class="bot-chat__options">
                 <li>Share any related documents you already have?</li>
@@ -698,158 +691,168 @@
   </section>
 
   <!-- ═══════════ RIGHT SIDEBAR ═══════════ -->
-  <!-- ═══════════ SCOREBOARD VIEW ═══════════ -->
-  <section class="scoreboard" id="scoreboard-view" style="display:none">
-    <header class="scoreboard__header">
-      <button class="scoreboard__back" id="scoreboard-back" title="Back to Action Center">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-      </button>
-      <div class="scoreboard__header-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-      </div>
-      <h2 class="scoreboard__title">Scoreboard</h2>
-    </header>
-
-    <div class="scoreboard__grid">
-      <!-- Funds Raised -->
-      <div class="scoreboard__card">
-        <div class="scoreboard__card-icon scoreboard__card-icon--green">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-        </div>
-        <span class="scoreboard__card-label">Funds Raised</span>
-        <span class="scoreboard__card-value">$128,430</span>
-        <span class="scoreboard__card-change scoreboard__card-change--up">+12.5% vs last month</span>
-        <div class="scoreboard__card-bar"><div class="scoreboard__card-fill scoreboard__card-fill--green" style="width:72%"></div></div>
-        <span class="scoreboard__card-goal">Goal: $180,000</span>
-      </div>
-
-      <!-- People Mobilised -->
-      <div class="scoreboard__card">
-        <div class="scoreboard__card-icon scoreboard__card-icon--blue">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </div>
-        <span class="scoreboard__card-label">People Mobilised</span>
-        <span class="scoreboard__card-value">14,208</span>
-        <span class="scoreboard__card-change scoreboard__card-change--up">+8.3% vs last month</span>
-        <div class="scoreboard__card-bar"><div class="scoreboard__card-fill scoreboard__card-fill--blue" style="width:57%"></div></div>
-        <span class="scoreboard__card-goal">Goal: 25,000</span>
-      </div>
-
-      <!-- Actions Taken -->
-      <div class="scoreboard__card">
-        <div class="scoreboard__card-icon scoreboard__card-icon--purple">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        </div>
-        <span class="scoreboard__card-label">Actions Taken</span>
-        <span class="scoreboard__card-value">52,741</span>
-        <span class="scoreboard__card-change scoreboard__card-change--up">+23.1% vs last month</span>
-        <div class="scoreboard__card-bar"><div class="scoreboard__card-fill scoreboard__card-fill--purple" style="width:88%"></div></div>
-        <span class="scoreboard__card-goal">Goal: 60,000</span>
-      </div>
-
-      <!-- Active Campaigns -->
-      <div class="scoreboard__card">
-        <div class="scoreboard__card-icon scoreboard__card-icon--orange">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        </div>
-        <span class="scoreboard__card-label">Active Campaigns</span>
-        <span class="scoreboard__card-value">37</span>
-        <span class="scoreboard__card-change scoreboard__card-change--up">+4 this month</span>
-        <div class="scoreboard__card-bar"><div class="scoreboard__card-fill scoreboard__card-fill--orange" style="width:74%"></div></div>
-        <span class="scoreboard__card-goal">Goal: 50</span>
-      </div>
-
-      <!-- Volunteers Registered -->
-      <div class="scoreboard__card">
-        <div class="scoreboard__card-icon scoreboard__card-icon--green">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg>
-        </div>
-        <span class="scoreboard__card-label">Volunteers Registered</span>
-        <span class="scoreboard__card-value">3,482</span>
-        <span class="scoreboard__card-change scoreboard__card-change--up">+156 this week</span>
-        <div class="scoreboard__card-bar"><div class="scoreboard__card-fill scoreboard__card-fill--green" style="width:64%"></div></div>
-        <span class="scoreboard__card-goal">Goal: 5,500</span>
-      </div>
-
-      <!-- Events Held -->
-      <div class="scoreboard__card">
-        <div class="scoreboard__card-icon scoreboard__card-icon--blue">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        </div>
-        <span class="scoreboard__card-label">Events Held</span>
-        <span class="scoreboard__card-value">124</span>
-        <span class="scoreboard__card-change scoreboard__card-change--up">+18 this month</span>
-        <div class="scoreboard__card-bar"><div class="scoreboard__card-fill scoreboard__card-fill--blue" style="width:83%"></div></div>
-        <span class="scoreboard__card-goal">Goal: 150</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════ DECISION MAKING TOOLS VIEW ═══════════ -->
-  <section class="decisions" id="decisions-view" style="display:none">
-    <header class="decisions__header">
-      <button class="decisions__back" id="decisions-back" title="Back to Action Center">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-      </button>
-      <div class="decisions__header-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-      </div>
-      <h2 class="decisions__title">Decision Making Tools</h2>
-    </header>
-    <div class="decisions__coming-soon">
-      <div class="decisions__icon-large">
-        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-      </div>
-      <h3 class="decisions__coming-title">Coming Soon</h3>
-      <p class="decisions__coming-text">Collaborative decision-making tools are being developed to help your movement make faster, more inclusive choices together.</p>
-    </div>
-  </section>
-
   <aside class="right-sidebar">
-    <div class="right-sidebar__header">
-      <h2 class="right-sidebar__title">Campaign Progress</h2>
-      <a href="#" class="right-sidebar__more" id="scoreboard-link">More</a>
+    <h2 class="right-sidebar__headline">Group Updates</h2>
+    <div class="right-sidebar__grid">
+
+      <!-- Actions This Week — full width -->
+      <div class="rs-widget rs-widget--actions">
+        <h3 class="rs-widget__title">Actions This Week</h3>
+        <ul class="rs-widget__action-list">
+          <li class="rs-widget__action-item">
+            <span class="rs-widget__action-bullet"></span>
+            <span class="rs-widget__action-text">Call 5 new supporters</span>
+            <span class="rs-widget__due">Mon</span>
+          </li>
+          <li class="rs-widget__action-item">
+            <span class="rs-widget__action-bullet"></span>
+            <span class="rs-widget__action-text">Distribute flyers at campus</span>
+            <span class="rs-widget__due">Tue</span>
+          </li>
+          <li class="rs-widget__action-item">
+            <span class="rs-widget__action-bullet"></span>
+            <span class="rs-widget__action-text">Submit petition signatures</span>
+            <span class="rs-widget__due">Wed</span>
+          </li>
+          <li class="rs-widget__action-item">
+            <span class="rs-widget__action-bullet"></span>
+            <span class="rs-widget__action-text">Host community meet-up</span>
+            <span class="rs-widget__due">Thu</span>
+          </li>
+          <li class="rs-widget__action-item">
+            <span class="rs-widget__action-bullet"></span>
+            <span class="rs-widget__action-text">Review weekly analytics</span>
+            <span class="rs-widget__due">Fri</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Money Raised — half width -->
+      <div class="rs-widget rs-widget--money">
+        <div class="rs-widget__icon-row">
+          <svg class="rs-widget__icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          <h3 class="rs-widget__title">Money Raised This Year</h3>
+        </div>
+        <span class="rs-widget__big-number">$9,993</span>
+        <span class="rs-widget__badge">+13% this year</span>
+        <div class="rs-widget__btn-row">
+          <button class="rs-widget__btn">Print &amp; Stationery</button>
+          <button class="rs-widget__btn">Escrow Top</button>
+        </div>
+      </div>
+
+      <!-- People — half width -->
+      <div class="rs-widget rs-widget--people">
+        <div class="rs-widget__icon-row">
+          <svg class="rs-widget__icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <h3 class="rs-widget__title">People</h3>
+        </div>
+        <div class="rs-widget__stat">
+          <span class="rs-widget__stat-number">15</span>
+          <span class="rs-widget__stat-label">Members</span>
+        </div>
+        <div class="rs-widget__stat">
+          <span class="rs-widget__stat-number rs-widget__stat-number--sm">40</span>
+          <span class="rs-widget__stat-label">Supporters</span>
+        </div>
+      </div>
+
+      <!-- New members alert — full width -->
+      <div class="rs-widget rs-widget--alert">
+        <svg class="rs-widget__alert-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+        <p class="rs-widget__alert-text"><strong>2 people joined last week:</strong> John Doe and Mary Doe. Contact them in the next 48 hours or refer to another group.</p>
+      </div>
+
+      <!-- Group Directory — full width -->
+      <div class="rs-widget rs-widget--directory">
+        <h3 class="rs-widget__title">Group Directory</h3>
+        <ul class="rs-widget__people-list">
+          <li class="rs-widget__person">
+            <span class="rs-widget__avatar" style="background:#7C3AED">N</span>
+            <span class="rs-widget__person-name">Ned Howey</span>
+            <span class="rs-widget__person-role">Member</span>
+          </li>
+          <li class="rs-widget__person">
+            <span class="rs-widget__avatar" style="background:#4E7CF6">S</span>
+            <span class="rs-widget__person-name">Sara Chen</span>
+            <span class="rs-widget__person-role">Member</span>
+          </li>
+          <li class="rs-widget__person">
+            <span class="rs-widget__avatar" style="background:#E04EBA">M</span>
+            <span class="rs-widget__person-name">Marcus Rivera</span>
+            <span class="rs-widget__person-role">Supporter</span>
+          </li>
+          <li class="rs-widget__person">
+            <span class="rs-widget__avatar" style="background:#FD883C">J</span>
+            <span class="rs-widget__person-name">Jasmine Okafor</span>
+            <span class="rs-widget__person-role">Member</span>
+          </li>
+          <li class="rs-widget__person">
+            <span class="rs-widget__avatar" style="background:#05C168">D</span>
+            <span class="rs-widget__person-name">David Park</span>
+            <span class="rs-widget__person-role">Supporter</span>
+          </li>
+          <li class="rs-widget__person">
+            <span class="rs-widget__avatar" style="background:#22D3EE">L</span>
+            <span class="rs-widget__person-name">Lucia Torres</span>
+            <span class="rs-widget__person-role">Supporter</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Group Conversation button -->
+      <button class="rs-widget rs-widget--group-msg" id="group-msg-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <span>Group Conversation</span>
+      </button>
+
     </div>
 
-    <!-- Stat Widgets -->
-    <div class="widget">
-      <div class="widget__icon widget__icon--green">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+    <!-- Group Message Overlay (hidden by default) -->
+    <div class="group-message-overlay" id="group-message-overlay">
+      <div class="group-message__header">
+        <h3 class="group-message__title">Group Conversation</h3>
+        <button class="group-message__close" id="group-msg-close">&times;</button>
       </div>
-      <div class="widget__content">
-        <span class="widget__label">Funds Raised</span>
-        <span class="widget__value">$128,430</span>
-        <span class="widget__change widget__change--up">+12.5%</span>
+      <div class="group-message__messages" id="group-msg-messages">
+        <div class="group-message__msg">
+          <span class="group-message__msg-avatar" style="background:#7C3AED">N</span>
+          <div class="group-message__msg-body">
+            <span class="group-message__msg-name">Ned Howey</span>
+            <p class="group-message__msg-text">Hey everyone! Don't forget about tomorrow's canvassing at Riverside Park. Meet at 9am.</p>
+            <span class="group-message__msg-time">10:32 AM</span>
+          </div>
+        </div>
+        <div class="group-message__msg">
+          <span class="group-message__msg-avatar" style="background:#4E7CF6">S</span>
+          <div class="group-message__msg-body">
+            <span class="group-message__msg-name">Sara Chen</span>
+            <p class="group-message__msg-text">I'll be there! Bringing extra clipboards and sign-up sheets.</p>
+            <span class="group-message__msg-time">10:45 AM</span>
+          </div>
+        </div>
+        <div class="group-message__msg">
+          <span class="group-message__msg-avatar" style="background:#FD883C">J</span>
+          <div class="group-message__msg-body">
+            <span class="group-message__msg-name">Jasmine Okafor</span>
+            <p class="group-message__msg-text">Great! I've posted about it on our social channels. Should we also bring the new flyers?</p>
+            <span class="group-message__msg-time">11:02 AM</span>
+          </div>
+        </div>
+        <div class="group-message__msg">
+          <span class="group-message__msg-avatar" style="background:#05C168">D</span>
+          <div class="group-message__msg-body">
+            <span class="group-message__msg-name">David Park</span>
+            <p class="group-message__msg-text">Yes, flyers are ready! Picked them up from the printer today.</p>
+            <span class="group-message__msg-time">11:15 AM</span>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="widget">
-      <div class="widget__icon widget__icon--blue">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-      </div>
-      <div class="widget__content">
-        <span class="widget__label">People Mobilised</span>
-        <span class="widget__value">14,208</span>
-        <span class="widget__change widget__change--up">+8.3%</span>
-      </div>
-    </div>
-    <div class="widget">
-      <div class="widget__icon widget__icon--purple">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-      </div>
-      <div class="widget__content">
-        <span class="widget__label">Actions Taken</span>
-        <span class="widget__value">52,741</span>
-        <span class="widget__change widget__change--up">+23.1%</span>
-      </div>
-    </div>
-    <div class="widget">
-      <div class="widget__icon widget__icon--orange">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-      </div>
-      <div class="widget__content">
-        <span class="widget__label">Active Campaigns</span>
-        <span class="widget__value">37</span>
-        <span class="widget__change widget__change--up">+4</span>
+      <div class="group-message__input-area">
+        <input type="text" class="group-message__input" placeholder="Type a message...">
+        <button class="group-message__send">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
       </div>
     </div>
   </aside>
@@ -869,8 +872,7 @@
       <span class="topbar__org-name">People's Movement</span>
     </div>
     <div class="topbar__brand">
-      <img src="images/tectonica-ai-logo.svg" alt="Tectonica.AI" class="topbar__logo">
-      <span class="topbar__tagline">powered by Change Agent</span>
+      <img src="images/logo-color.png" alt="Tectonica.AI" class="topbar__logo">
     </div>
   </div>
 

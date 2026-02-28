@@ -2,6 +2,11 @@
    TAI Future — Movement Intelligence Prototype
    ═══════════════════════════════════════════ */
 
+// ─── Hide broken avatar images (graceful fallback to colored circle) ───
+document.querySelectorAll('.bot-card__avatar').forEach(img => {
+  img.addEventListener('error', () => { img.style.display = 'none'; });
+});
+
 // ─── GSAP Defaults ───
 gsap.defaults({ ease: 'power2.out', duration: 0.4 });
 
@@ -45,11 +50,9 @@ function animateMessagesIn(selector) {
 
 // ─── Close all special views ───
 function closeAllViews() {
-  document.body.classList.remove('chat-mode', 'coach-mode', 'scoreboard-mode', 'decisions-mode', 'editor-open');
+  document.body.classList.remove('chat-mode', 'coach-mode', 'editor-open');
   document.getElementById('bot-chat').style.display = 'none';
   document.getElementById('coach-view').style.display = 'none';
-  document.getElementById('scoreboard-view').style.display = 'none';
-  document.getElementById('decisions-view').style.display = 'none';
 }
 
 function returnToDashboard() {
@@ -121,31 +124,24 @@ document.querySelectorAll('.sidebar__chat-item').forEach(item => {
   });
 });
 
-// ─── Scoreboard link ───
-const scoreboardLink = document.getElementById('scoreboard-link');
-if (scoreboardLink) {
-  scoreboardLink.addEventListener('click', e => {
-    e.preventDefault();
-    closeAllViews();
-    const scoreNav = document.getElementById('nav-scoreboard');
-    if (scoreNav) {
-      document.querySelector('.sidebar__nav-item--active')?.classList.remove('sidebar__nav-item--active');
-      scoreNav.classList.add('sidebar__nav-item--active');
-    }
-    document.body.classList.add('scoreboard-mode');
-    document.getElementById('scoreboard-view').style.display = 'flex';
-    animateCardsIn('.scoreboard__card');
-  });
-}
-
-// ─── Chat panel toggle ───
-const chatPanelToggle = document.getElementById('chat-panel-toggle');
+// ─── Chat panel toggle (floating button + close) ───
+const floatingChatBtn = document.getElementById('floating-chat-btn');
 const chatPanelClose = document.getElementById('chat-panel-close');
-if (chatPanelToggle) {
-  chatPanelToggle.addEventListener('click', () => document.body.classList.toggle('chat-open'));
+if (floatingChatBtn) {
+  floatingChatBtn.addEventListener('click', () => document.body.classList.add('chat-open'));
 }
 if (chatPanelClose) {
   chatPanelClose.addEventListener('click', () => document.body.classList.remove('chat-open'));
+}
+
+// ─── Group Message overlay toggle ───
+const groupMsgBtn = document.getElementById('group-msg-btn');
+const groupMsgClose = document.getElementById('group-msg-close');
+if (groupMsgBtn) {
+  groupMsgBtn.addEventListener('click', () => document.body.classList.add('group-chat-open'));
+}
+if (groupMsgClose) {
+  groupMsgClose.addEventListener('click', () => document.body.classList.remove('group-chat-open'));
 }
 
 // ═══════════════════════════════════════════
@@ -153,7 +149,7 @@ if (chatPanelClose) {
 // ═══════════════════════════════════════════
 
 const BOT_PROMPTS = {
-  'Visual Creation Bot': 'You are the Visual Creation Bot for Tectonica.AI\'s Movement Intelligence platform. You help organizers design graphics, social media cards, posters, and visual assets aligned with their campaign identity. Ask about their brand guidelines, target audience, and the message they want to convey. Suggest layouts, color schemes, and imagery.',
+  'Graphic Creation Bot': 'You are the Graphic Creation Bot for Tectonica.AI\'s Movement Intelligence platform. You help organizers design graphics, social media cards, posters, and visual assets aligned with their campaign identity. Ask about their brand guidelines, target audience, and the message they want to convey. Suggest layouts, color schemes, and imagery.',
   'Find a Place to Organize': 'You are the Find a Place to Organize Bot. You help organizers discover venues, community spaces, and locations ideal for meetings, rallies, canvassing kickoffs, and events. Ask about location preferences, capacity needs, accessibility requirements, and budget.',
   'Tech Assessment Bot': 'You are the Tech Assessment Bot. You help organizers evaluate their tech stack, identify gaps, and get recommendations for campaign tools. Ask about their current tools, team size, budget, and goals.',
   'Group Placement Bot': 'You are the Group Placement Bot (CRM-connected). You help match volunteers to the right teams and working groups based on their skills, interests, availability, and location. Ask about the volunteer\'s background and what they\'re passionate about.',
@@ -189,7 +185,7 @@ const BOT_WELCOME = {
 // ═══════════════════════════════════════════
 
 const BOT_HISTORY = {
-  'Visual Creation Bot': [
+  'Graphic Creation Bot': [
     { title: 'Rally poster design', date: 'Today' },
     { title: 'Social media banner set', date: 'Yesterday' },
     { title: 'Email header graphic', date: '3 days ago' },
@@ -293,9 +289,9 @@ function openBotChat(botName, imgSrc) {
     if (avatarEl) { avatarEl.src = imgSrc; avatarEl.alt = botName; }
   }
 
-  // Show Studio button only for Visual Creation Bot
+  // Show Studio button only for Graphic Creation Bot
   const studioBtn = document.getElementById('editor-toggle');
-  if (studioBtn) studioBtn.style.display = botName === 'Visual Creation Bot' ? 'flex' : 'none';
+  if (studioBtn) studioBtn.style.display = botName === 'Graphic Creation Bot' ? 'flex' : 'none';
 
   // Populate chat history sidebar
   populateChatHistory(botName);
@@ -479,8 +475,7 @@ function scrollToBottom() {
 document.querySelectorAll('.bot-card').forEach(card => {
   card.addEventListener('click', () => {
     const title = card.querySelector('.bot-card__title')?.textContent;
-    const imgSrc = card.querySelector('.bot-card__img')?.src;
-    if (title) openBotChat(title, imgSrc);
+    if (title) openBotChat(title, null);
   });
 });
 
@@ -510,12 +505,6 @@ if (chatBack) chatBack.addEventListener('click', () => returnToDashboard());
 const coachBack = document.getElementById('coach-back');
 if (coachBack) coachBack.addEventListener('click', () => returnToDashboard());
 
-const scoreboardBack = document.getElementById('scoreboard-back');
-if (scoreboardBack) scoreboardBack.addEventListener('click', () => returnToDashboard());
-
-const decisionsBack = document.getElementById('decisions-back');
-if (decisionsBack) decisionsBack.addEventListener('click', () => returnToDashboard());
-
 // ─── Nav view handlers ───
 const coachNav = document.getElementById('nav-coach');
 if (coachNav) {
@@ -528,32 +517,10 @@ if (coachNav) {
   });
 }
 
-const scoreboardNav = document.getElementById('nav-scoreboard');
-if (scoreboardNav) {
-  scoreboardNav.addEventListener('click', e => {
-    e.preventDefault();
-    closeAllViews();
-    document.body.classList.add('scoreboard-mode');
-    document.getElementById('scoreboard-view').style.display = 'flex';
-    animateCardsIn('.scoreboard__card');
-  });
-}
-
-const decisionsNav = document.getElementById('nav-decisions');
-if (decisionsNav) {
-  decisionsNav.addEventListener('click', e => {
-    e.preventDefault();
-    closeAllViews();
-    document.body.classList.add('decisions-mode');
-    document.getElementById('decisions-view').style.display = 'flex';
-    animateViewIn(document.querySelector('.decisions__coming-soon'));
-  });
-}
-
 // ─── Other nav items — return to dashboard ───
 document.querySelectorAll('.sidebar__nav-item').forEach(item => {
   item.addEventListener('click', () => {
-    if (['nav-coach', 'nav-scoreboard', 'nav-decisions'].includes(item.id)) return;
+    if (item.id === 'nav-coach') return;
     closeAllViews();
     gsap.from('.bot-card', { y: 20, opacity: 0, duration: 0.35, stagger: 0.025, ease: 'power2.out', clearProps: 'all' });
   });
@@ -635,8 +602,7 @@ if (editorClose) editorClose.addEventListener('click', () => document.body.class
   function attachCardClick(card) {
     card.addEventListener('click', () => {
       const title = card.querySelector('.bot-card__title')?.textContent;
-      const imgSrc = card.querySelector('.bot-card__img')?.src;
-      if (title) openBotChat(title, imgSrc);
+      if (title) openBotChat(title, null);
     });
   }
 
@@ -654,11 +620,18 @@ if (editorClose) editorClose.addEventListener('click', () => document.body.class
       const existing = getFeaturedBotNames();
       const dupeCount = existing.filter(n => n === newName).length;
       if (dupeCount > 1) {
-        // This card is a duplicate — remove it
         evt.item.remove();
         setTimeout(updateCarouselArrows, 50);
         return;
       }
+      // ─── Detect source category and set data-category ───
+      const srcCategory = evt.from.closest('.category');
+      let cat = '';
+      if (srcCategory?.classList.contains('category--orange')) cat = 'organizer';
+      else if (srcCategory?.classList.contains('category--purple')) cat = 'content';
+      else if (srcCategory?.classList.contains('category--green')) cat = 'fundraising';
+      else if (srcCategory?.classList.contains('category--blue')) cat = 'admin';
+      if (cat) evt.item.setAttribute('data-category', cat);
       // Add remove button + click handler
       addRemoveButton(evt.item);
       attachCardClick(evt.item);
@@ -689,5 +662,48 @@ if (editorClose) editorClose.addEventListener('click', () => document.body.class
       onEnd() { featuredContainer?.classList.remove('drag-over'); },
     });
   });
+
+  // ─── Star-to-favorite: add star buttons to non-featured cards ───
+  function detectCategory(card) {
+    const cat = card.closest('.category');
+    if (cat?.classList.contains('category--orange')) return 'organizer';
+    if (cat?.classList.contains('category--purple')) return 'content';
+    if (cat?.classList.contains('category--green')) return 'fundraising';
+    if (cat?.classList.contains('category--blue')) return 'admin';
+    return '';
+  }
+
+  function addStarButton(card) {
+    if (card.querySelector('.bot-card__star')) return;
+    const btn = document.createElement('button');
+    btn.className = 'bot-card__star';
+    btn.title = 'Add to Your Bots';
+    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>';
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const botName = card.querySelector('.bot-card__title')?.textContent?.trim();
+      // Prevent duplicates
+      if (getFeaturedBotNames().includes(botName)) return;
+      // Clone the card
+      const clone = card.cloneNode(true);
+      // Set data-category
+      const cat = detectCategory(card);
+      if (cat) clone.setAttribute('data-category', cat);
+      // Remove star from clone, add remove button
+      clone.querySelector('.bot-card__star')?.remove();
+      addRemoveButton(clone);
+      attachCardClick(clone);
+      // Add to featured
+      featuredCards.appendChild(clone);
+      setTimeout(updateCarouselArrows, 50);
+      gsap.from(clone, { scale: 0.8, opacity: 0, duration: 0.3, ease: 'power2.out', clearProps: 'all' });
+      // Quick feedback on the star
+      gsap.to(btn, { scale: 1.3, duration: 0.15, yoyo: true, repeat: 1, ease: 'power2.out' });
+    });
+    card.appendChild(btn);
+  }
+
+  // Add stars to all non-featured cards
+  document.querySelectorAll('.category:not(.category--featured) .bot-card').forEach(addStarButton);
 
 })();
