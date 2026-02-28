@@ -418,13 +418,14 @@ body::after {
   color: var(--text-primary);
 }
 
-.topbar__group-name {
-  font-size: .75rem;
+.topbar__group-pill {
+  font-size: .72rem;
   font-weight: 600;
-  color: var(--text-muted);
-  padding-left: 8px;
-  margin-left: 8px;
-  border-left: 1px solid rgba(0, 0, 0, .15);
+  color: var(--accent-purple);
+  background: rgba(124, 58, 237, .1);
+  padding: 3px 10px;
+  margin-left: 10px;
+  border-radius: 20px;
 }
 
 .topbar__right {
@@ -717,6 +718,17 @@ body::after {
 
 .rs-widget__alert-text strong {
   font-weight: 700;
+}
+
+.rs-widget__alert-link {
+  color: #92400e;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.rs-widget__alert-link:hover {
+  color: #78350f;
 }
 
 /* Recruit button */
