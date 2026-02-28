@@ -41,9 +41,9 @@
   --font:            'Google Sans', sans-serif;
   --sidebar-width:   180px;
   --right-sidebar:   740px;
-  --radius:          14px;
-  --radius-sm:       10px;
-  --radius-lg:       20px;
+  --radius:          8px;
+  --radius-sm:       6px;
+  --radius-lg:       12px;
 
   /* Category pastel colors */
   --cat-organizer:   #FFB5A7;
@@ -555,6 +555,16 @@ body::after {
   background: none;
 }
 
+.rs-widget__pair {
+  display: flex;
+  gap: 10px;
+}
+
+.rs-widget__pair > .rs-widget__sub {
+  flex: 1;
+  min-width: 0;
+}
+
 /* ─── Sub-widgets (cards inside columns) ─── */
 .rs-widget__sub {
   border-radius: var(--radius);
@@ -616,7 +626,7 @@ body::after {
   font-size: .66rem;
   font-weight: 600;
   padding: 3px 8px;
-  border-radius: 20px;
+  border-radius: 12px;
   margin-top: 4px;
   width: fit-content;
 }
@@ -718,14 +728,15 @@ body::after {
   background: var(--accent-purple);
   color: #fff;
   border: none;
-  border-radius: var(--radius);
-  padding: 10px;
+  border-radius: var(--radius-sm);
+  padding: 8px;
   font-family: var(--font);
-  font-size: .78rem;
+  font-size: .72rem;
   font-weight: 700;
   cursor: pointer;
   transition: background .15s;
   width: 100%;
+  margin-top: 10px;
 }
 
 .rs-widget__recruit-btn:hover {
@@ -737,10 +748,24 @@ body::after {
   flex-shrink: 0;
 }
 
+/* Dir alert (inside directory) */
+.rs-widget__dir-alert {
+  background: #fef3c7;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 10px;
+}
+
 /* Group Directory */
 .rs-widget__sub--directory {
   background: #fff;
-  max-height: 150px;
+}
+
+.rs-widget__sub--directory .rs-widget__people-list {
+  max-height: 130px;
   overflow-y: auto;
 }
 
@@ -788,22 +813,33 @@ body::after {
   background: #f8fafc;
 }
 
-.rs-widget__systems-list {
-  list-style: none;
+.rs-widget__systems-row {
   display: flex;
-  flex-direction: column;
   gap: 8px;
 }
 
-.rs-widget__system {
+.rs-widget__system-btn {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, .1);
+  border-radius: var(--radius-sm);
+  padding: 6px 10px;
+  cursor: pointer;
+  font-family: var(--font);
+  transition: border-color .15s, box-shadow .15s;
+  flex: 1;
+}
+
+.rs-widget__system-btn:hover {
+  border-color: rgba(0, 0, 0, .2);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .06);
 }
 
 .rs-widget__system-dot {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   flex-shrink: 0;
   background: #ccc;
@@ -815,16 +851,21 @@ body::after {
 }
 
 .rs-widget__system-name {
-  font-size: .8rem;
+  font-size: .72rem;
   font-weight: 600;
   color: rgba(0, 0, 0, .72);
   flex: 1;
 }
 
-.rs-widget__system-status {
-  font-size: .66rem;
-  font-weight: 600;
-  color: var(--accent-green-text);
+.rs-widget__system-more {
+  font-size: .65rem;
+  font-weight: 500;
+  color: var(--accent-purple);
+  text-decoration: none;
+}
+
+.rs-widget__system-more:hover {
+  text-decoration: underline;
 }
 
 /* ─── Submit for Approval ─── */
@@ -1853,7 +1894,7 @@ body.editor-open .bot-chat__history {
   color: var(--accent-purple);
   background: rgba(124, 58, 237, .08);
   padding: 3px 10px;
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
 }
 
 /* Bot options list */
