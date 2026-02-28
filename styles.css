@@ -418,6 +418,15 @@ body::after {
   color: var(--text-primary);
 }
 
+.topbar__group-name {
+  font-size: .75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  padding-left: 8px;
+  margin-left: 8px;
+  border-left: 1px solid rgba(0, 0, 0, .15);
+}
+
 .topbar__right {
   display: flex;
   align-items: center;
@@ -467,15 +476,15 @@ body::after {
 /* ─── Widget Base ─── */
 .rs-widget {
   border-radius: var(--radius-lg);
-  padding: 18px;
+  padding: 16px;
   font-family: var(--font);
 }
 
 .rs-widget__title {
-  font-size: .78rem;
+  font-size: .72rem;
   font-weight: 700;
-  color: rgba(0, 0, 0, .55);
-  margin-bottom: 10px;
+  color: rgba(0, 0, 0, .50);
+  margin-bottom: 8px;
   text-transform: uppercase;
   letter-spacing: .03em;
 }
@@ -483,8 +492,8 @@ body::after {
 .rs-widget__icon-row {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 10px;
+  gap: 6px;
+  margin-bottom: 8px;
 }
 
 .rs-widget__icon-row .rs-widget__title {
@@ -493,7 +502,7 @@ body::after {
 
 .rs-widget__icon {
   flex-shrink: 0;
-  opacity: .6;
+  opacity: .55;
 }
 
 /* ─── Actions (full width) ─── */
@@ -506,14 +515,14 @@ body::after {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 7px;
+  gap: 6px;
 }
 
 .rs-widget__action-item {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: .82rem;
+  font-size: .8rem;
   color: rgba(0, 0, 0, .72);
 }
 
@@ -530,44 +539,93 @@ body::after {
 }
 
 .rs-widget__due {
-  font-size: .7rem;
+  font-size: .68rem;
   font-weight: 600;
   color: rgba(0, 0, 0, .38);
   flex-shrink: 0;
 }
 
-/* ─── Money Raised (half width) ─── */
-.rs-widget--money {
-  background: #fff3e0;
+/* ─── Left & Right Columns ─── */
+.rs-widget--left-col,
+.rs-widget--right-col {
   display: flex;
   flex-direction: column;
+  gap: 12px;
+  padding: 0;
+  background: none;
+}
+
+/* ─── Sub-widgets (cards inside columns) ─── */
+.rs-widget__sub {
+  border-radius: var(--radius);
+  padding: 14px;
+}
+
+/* Money goal */
+.rs-widget__sub--money {
+  background: #fff3e0;
 }
 
 .rs-widget__big-number {
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 800;
   color: rgba(0, 0, 0, .8);
   line-height: 1;
   letter-spacing: -.03em;
 }
 
+.rs-widget__goal {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.rs-widget__goal-target {
+  font-size: .72rem;
+  font-weight: 600;
+  color: rgba(0, 0, 0, .38);
+}
+
+.rs-widget__progress-bar {
+  height: 6px;
+  background: rgba(0, 0, 0, .08);
+  border-radius: 3px;
+  margin: 6px 0;
+  overflow: hidden;
+}
+
+.rs-widget__progress-fill {
+  height: 100%;
+  background: var(--accent-orange);
+  border-radius: 3px;
+}
+
+.rs-widget__progress-fill--blue {
+  background: var(--accent-blue);
+}
+
+.rs-widget__progress-fill--green {
+  background: var(--accent-green);
+}
+
 .rs-widget__badge {
   display: inline-block;
-  background: rgba(0, 0, 0, .1);
-  color: rgba(0, 0, 0, .6);
-  font-size: .68rem;
+  background: rgba(0, 0, 0, .08);
+  color: rgba(0, 0, 0, .55);
+  font-size: .66rem;
   font-weight: 600;
   padding: 3px 8px;
   border-radius: 20px;
-  margin-top: 6px;
+  margin-top: 4px;
   width: fit-content;
 }
 
 .rs-widget__btn-row {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  margin-top: 12px;
+  gap: 5px;
+  margin-top: 8px;
 }
 
 .rs-widget__btn {
@@ -575,9 +633,9 @@ body::after {
   border: none;
   border-radius: var(--radius-sm);
   padding: 6px 10px;
-  font-size: .72rem;
+  font-size: .7rem;
   font-weight: 600;
-  color: rgba(0, 0, 0, .65);
+  color: rgba(0, 0, 0, .6);
   cursor: pointer;
   font-family: var(--font);
   transition: background .15s;
@@ -587,12 +645,18 @@ body::after {
   background: rgba(0, 0, 0, .15);
 }
 
-/* ─── People (half width) ─── */
-.rs-widget--people {
+.rs-widget__btn--accent {
+  background: var(--accent-purple);
+  color: #fff;
+}
+
+.rs-widget__btn--accent:hover {
+  background: #6B2FD6;
+}
+
+/* People goal */
+.rs-widget__sub--people {
   background: #e0f2fe;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
 }
 
 .rs-widget__stat {
@@ -602,31 +666,31 @@ body::after {
 }
 
 .rs-widget__stat-number {
-  font-size: 2.2rem;
+  font-size: 1.6rem;
   font-weight: 800;
   color: rgba(0, 0, 0, .8);
   line-height: 1;
   letter-spacing: -.03em;
 }
 
-.rs-widget__stat-number--sm {
-  font-size: 2.2rem;
-}
-
 .rs-widget__stat-label {
-  font-size: .78rem;
+  font-size: .72rem;
   font-weight: 600;
-  color: rgba(0, 0, 0, .55);
+  color: rgba(0, 0, 0, .50);
 }
 
-/* ─── New Members Alert (full width) ─── */
-.rs-widget--alert {
-  grid-column: 1 / -1;
+/* Hours volunteered */
+.rs-widget__sub--hours {
+  background: #ecfdf5;
+}
+
+/* New members alert */
+.rs-widget__sub--alert {
   background: #fef3c7;
   display: flex;
   align-items: flex-start;
-  gap: 10px;
-  padding: 14px 16px;
+  gap: 8px;
+  padding: 12px 14px;
 }
 
 .rs-widget__alert-icon {
@@ -636,20 +700,47 @@ body::after {
 }
 
 .rs-widget__alert-text {
-  font-size: .8rem;
+  font-size: .75rem;
   color: #78350f;
-  line-height: 1.45;
+  line-height: 1.4;
 }
 
 .rs-widget__alert-text strong {
   font-weight: 700;
 }
 
-/* ─── Group Directory (full width) ─── */
-.rs-widget--directory {
-  grid-column: 1 / -1;
+/* Recruit button */
+.rs-widget__recruit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--accent-purple);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  padding: 10px;
+  font-family: var(--font);
+  font-size: .78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .15s;
+  width: 100%;
+}
+
+.rs-widget__recruit-btn:hover {
+  background: #6B2FD6;
+}
+
+.rs-widget__recruit-btn svg {
+  stroke: currentColor;
+  flex-shrink: 0;
+}
+
+/* Group Directory */
+.rs-widget__sub--directory {
   background: #fff;
-  max-height: 160px;
+  max-height: 150px;
   overflow-y: auto;
 }
 
@@ -657,21 +748,21 @@ body::after {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 7px;
 }
 
 .rs-widget__person {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .rs-widget__avatar {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   color: #fff;
-  font-size: .75rem;
+  font-size: .68rem;
   font-weight: 700;
   display: flex;
   align-items: center;
@@ -680,40 +771,148 @@ body::after {
 }
 
 .rs-widget__person-name {
-  font-size: .82rem;
+  font-size: .78rem;
   font-weight: 600;
-  color: rgba(0, 0, 0, .75);
+  color: rgba(0, 0, 0, .72);
   flex: 1;
 }
 
 .rs-widget__person-role {
-  font-size: .7rem;
+  font-size: .66rem;
   font-weight: 500;
-  color: rgba(0, 0, 0, .45);
+  color: rgba(0, 0, 0, .4);
 }
 
-/* ─── Group Conversation Button (1/3 width) ─── */
-.rs-widget--group-msg {
-  grid-column: 1 / -1;
+/* ─── Connected Systems ─── */
+.rs-widget__sub--systems {
+  background: #f8fafc;
+}
+
+.rs-widget__systems-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rs-widget__system {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rs-widget__system-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: #ccc;
+}
+
+.rs-widget__system-dot--on {
+  background: var(--accent-green);
+  box-shadow: 0 0 6px rgba(5, 193, 104, .5);
+}
+
+.rs-widget__system-name {
+  font-size: .8rem;
+  font-weight: 600;
+  color: rgba(0, 0, 0, .72);
+  flex: 1;
+}
+
+.rs-widget__system-status {
+  font-size: .66rem;
+  font-weight: 600;
+  color: var(--accent-green-text);
+}
+
+/* ─── Submit for Approval ─── */
+.rs-widget__sub--approval {
+  background: #fdf2f8;
+}
+
+.rs-widget__approval-desc {
+  font-size: .76rem;
+  color: rgba(0, 0, 0, .55);
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+
+.rs-widget__approval-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: var(--accent-pink);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  font-family: var(--font);
+  font-size: .76rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .15s;
+  width: 100%;
+}
+
+.rs-widget__approval-btn:hover {
+  background: #c93da2;
+}
+
+.rs-widget__approval-btn svg {
+  stroke: currentColor;
+  flex-shrink: 0;
+}
+
+/* ─── Chat Preview ─── */
+.rs-widget__sub--chat-preview {
+  background: #f5f3ff;
+}
+
+.rs-widget__chat-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.rs-widget__chat-msg {
+  font-size: .76rem;
+  line-height: 1.35;
+  color: rgba(0, 0, 0, .65);
+}
+
+.rs-widget__chat-author {
+  font-weight: 700;
+  color: var(--accent-purple);
+}
+
+.rs-widget__chat-text {
+  color: rgba(0, 0, 0, .6);
+}
+
+.rs-widget__chat-open-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
   background: var(--accent-green);
   color: #fff;
   border: none;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
   font-family: var(--font);
-  font-size: .78rem;
+  font-size: .76rem;
   font-weight: 700;
-  padding: 10px 16px;
-  width: 33.33%;
-  transition: background .15s, transform .15s;
+  cursor: pointer;
+  transition: background .15s;
+  width: 100%;
 }
 
-.rs-widget--group-msg:hover {
+.rs-widget__chat-open-btn:hover {
   background: #04a858;
-  transform: translateY(-1px);
 }
 
 .rs-widget--group-msg svg {

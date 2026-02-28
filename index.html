@@ -695,116 +695,192 @@
     <h2 class="right-sidebar__headline">Group Updates</h2>
     <div class="right-sidebar__grid">
 
-      <!-- Actions This Week — full width -->
+      <!-- Group actions to take today — full width -->
       <div class="rs-widget rs-widget--actions">
-        <h3 class="rs-widget__title">Actions This Week</h3>
+        <h3 class="rs-widget__title">Group Actions to Take Today</h3>
         <ul class="rs-widget__action-list">
           <li class="rs-widget__action-item">
             <span class="rs-widget__action-bullet"></span>
             <span class="rs-widget__action-text">Call 5 new supporters</span>
-            <span class="rs-widget__due">Mon</span>
+            <span class="rs-widget__due">9 AM</span>
           </li>
           <li class="rs-widget__action-item">
             <span class="rs-widget__action-bullet"></span>
             <span class="rs-widget__action-text">Distribute flyers at campus</span>
-            <span class="rs-widget__due">Tue</span>
+            <span class="rs-widget__due">11 AM</span>
           </li>
           <li class="rs-widget__action-item">
             <span class="rs-widget__action-bullet"></span>
             <span class="rs-widget__action-text">Submit petition signatures</span>
-            <span class="rs-widget__due">Wed</span>
+            <span class="rs-widget__due">1 PM</span>
           </li>
           <li class="rs-widget__action-item">
             <span class="rs-widget__action-bullet"></span>
             <span class="rs-widget__action-text">Host community meet-up</span>
-            <span class="rs-widget__due">Thu</span>
+            <span class="rs-widget__due">3 PM</span>
           </li>
           <li class="rs-widget__action-item">
             <span class="rs-widget__action-bullet"></span>
             <span class="rs-widget__action-text">Review weekly analytics</span>
-            <span class="rs-widget__due">Fri</span>
+            <span class="rs-widget__due">5 PM</span>
           </li>
         </ul>
       </div>
 
-      <!-- Money Raised — half width -->
-      <div class="rs-widget rs-widget--money">
-        <div class="rs-widget__icon-row">
-          <svg class="rs-widget__icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-          <h3 class="rs-widget__title">Money Raised This Year</h3>
+      <!-- Two-column row: left = members + directory, right = systems + goals -->
+      <div class="rs-widget rs-widget--left-col">
+
+        <!-- Money Goal -->
+        <div class="rs-widget__sub rs-widget__sub--money">
+          <div class="rs-widget__icon-row">
+            <svg class="rs-widget__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            <h3 class="rs-widget__title">Fundraising Goal</h3>
+          </div>
+          <div class="rs-widget__goal">
+            <span class="rs-widget__big-number">$9,993</span>
+            <span class="rs-widget__goal-target">of $15,000</span>
+          </div>
+          <div class="rs-widget__progress-bar"><div class="rs-widget__progress-fill" style="width:66.6%"></div></div>
+          <div class="rs-widget__btn-row">
+            <button class="rs-widget__btn">Supply &amp; Print Budget</button>
+            <button class="rs-widget__btn rs-widget__btn--accent">Request Reimbursement</button>
+          </div>
         </div>
-        <span class="rs-widget__big-number">$9,993</span>
-        <span class="rs-widget__badge">+13% this year</span>
-        <div class="rs-widget__btn-row">
-          <button class="rs-widget__btn">Print &amp; Stationery</button>
-          <button class="rs-widget__btn">Escrow Top</button>
+
+        <!-- People Goal -->
+        <div class="rs-widget__sub rs-widget__sub--people">
+          <div class="rs-widget__icon-row">
+            <svg class="rs-widget__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <h3 class="rs-widget__title">Recruitment Goal</h3>
+          </div>
+          <div class="rs-widget__goal">
+            <span class="rs-widget__stat-number">15</span>
+            <span class="rs-widget__stat-label">Members</span>
+            <span class="rs-widget__goal-target">of 25</span>
+          </div>
+          <div class="rs-widget__goal">
+            <span class="rs-widget__stat-number">40</span>
+            <span class="rs-widget__stat-label">Supporters</span>
+            <span class="rs-widget__goal-target">of 100</span>
+          </div>
+          <div class="rs-widget__progress-bar"><div class="rs-widget__progress-fill rs-widget__progress-fill--blue" style="width:40%"></div></div>
         </div>
+
+        <!-- Hours Volunteered -->
+        <div class="rs-widget__sub rs-widget__sub--hours">
+          <div class="rs-widget__icon-row">
+            <svg class="rs-widget__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <h3 class="rs-widget__title">Hours Volunteered</h3>
+          </div>
+          <div class="rs-widget__goal">
+            <span class="rs-widget__big-number">127</span>
+            <span class="rs-widget__goal-target">hrs this month</span>
+          </div>
+          <div class="rs-widget__progress-bar"><div class="rs-widget__progress-fill rs-widget__progress-fill--green" style="width:63.5%"></div></div>
+          <span class="rs-widget__badge">+18% vs last month</span>
+        </div>
+
+        <!-- New members alert -->
+        <div class="rs-widget__sub rs-widget__sub--alert">
+          <svg class="rs-widget__alert-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+          <p class="rs-widget__alert-text"><strong>2 people joined last week:</strong> John Doe and Mary Doe. Contact them in the next 48 hours or refer to another group.</p>
+        </div>
+
+        <!-- Recruit More People -->
+        <button class="rs-widget__recruit-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+          Recruit More People
+        </button>
+
+        <!-- Group Directory -->
+        <div class="rs-widget__sub rs-widget__sub--directory">
+          <h3 class="rs-widget__title">Group Directory</h3>
+          <ul class="rs-widget__people-list">
+            <li class="rs-widget__person">
+              <span class="rs-widget__avatar" style="background:#7C3AED">N</span>
+              <span class="rs-widget__person-name">Ned Howey</span>
+              <span class="rs-widget__person-role">Member</span>
+            </li>
+            <li class="rs-widget__person">
+              <span class="rs-widget__avatar" style="background:#4E7CF6">S</span>
+              <span class="rs-widget__person-name">Sara Chen</span>
+              <span class="rs-widget__person-role">Member</span>
+            </li>
+            <li class="rs-widget__person">
+              <span class="rs-widget__avatar" style="background:#E04EBA">M</span>
+              <span class="rs-widget__person-name">Marcus Rivera</span>
+              <span class="rs-widget__person-role">Supporter</span>
+            </li>
+            <li class="rs-widget__person">
+              <span class="rs-widget__avatar" style="background:#FD883C">J</span>
+              <span class="rs-widget__person-name">Jasmine Okafor</span>
+              <span class="rs-widget__person-role">Member</span>
+            </li>
+            <li class="rs-widget__person">
+              <span class="rs-widget__avatar" style="background:#05C168">D</span>
+              <span class="rs-widget__person-name">David Park</span>
+              <span class="rs-widget__person-role">Supporter</span>
+            </li>
+            <li class="rs-widget__person">
+              <span class="rs-widget__avatar" style="background:#22D3EE">L</span>
+              <span class="rs-widget__person-name">Lucia Torres</span>
+              <span class="rs-widget__person-role">Supporter</span>
+            </li>
+          </ul>
+        </div>
+
       </div>
 
-      <!-- People — half width -->
-      <div class="rs-widget rs-widget--people">
-        <div class="rs-widget__icon-row">
-          <svg class="rs-widget__icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          <h3 class="rs-widget__title">People</h3>
-        </div>
-        <div class="rs-widget__stat">
-          <span class="rs-widget__stat-number">15</span>
-          <span class="rs-widget__stat-label">Members</span>
-        </div>
-        <div class="rs-widget__stat">
-          <span class="rs-widget__stat-number rs-widget__stat-number--sm">40</span>
-          <span class="rs-widget__stat-label">Supporters</span>
-        </div>
-      </div>
+      <div class="rs-widget rs-widget--right-col">
 
-      <!-- New members alert — full width -->
-      <div class="rs-widget rs-widget--alert">
-        <svg class="rs-widget__alert-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
-        <p class="rs-widget__alert-text"><strong>2 people joined last week:</strong> John Doe and Mary Doe. Contact them in the next 48 hours or refer to another group.</p>
-      </div>
+        <!-- Connected Systems -->
+        <div class="rs-widget__sub rs-widget__sub--systems">
+          <h3 class="rs-widget__title">Connected Systems</h3>
+          <ul class="rs-widget__systems-list">
+            <li class="rs-widget__system">
+              <span class="rs-widget__system-dot rs-widget__system-dot--on"></span>
+              <span class="rs-widget__system-name">Action Network</span>
+              <span class="rs-widget__system-status">Connected</span>
+            </li>
+            <li class="rs-widget__system">
+              <span class="rs-widget__system-dot rs-widget__system-dot--on"></span>
+              <span class="rs-widget__system-name">VAN</span>
+              <span class="rs-widget__system-status">Connected</span>
+            </li>
+          </ul>
+        </div>
 
-      <!-- Group Directory — full width -->
-      <div class="rs-widget rs-widget--directory">
-        <h3 class="rs-widget__title">Group Directory</h3>
-        <ul class="rs-widget__people-list">
-          <li class="rs-widget__person">
-            <span class="rs-widget__avatar" style="background:#7C3AED">N</span>
-            <span class="rs-widget__person-name">Ned Howey</span>
-            <span class="rs-widget__person-role">Member</span>
-          </li>
-          <li class="rs-widget__person">
-            <span class="rs-widget__avatar" style="background:#4E7CF6">S</span>
-            <span class="rs-widget__person-name">Sara Chen</span>
-            <span class="rs-widget__person-role">Member</span>
-          </li>
-          <li class="rs-widget__person">
-            <span class="rs-widget__avatar" style="background:#E04EBA">M</span>
-            <span class="rs-widget__person-name">Marcus Rivera</span>
-            <span class="rs-widget__person-role">Supporter</span>
-          </li>
-          <li class="rs-widget__person">
-            <span class="rs-widget__avatar" style="background:#FD883C">J</span>
-            <span class="rs-widget__person-name">Jasmine Okafor</span>
-            <span class="rs-widget__person-role">Member</span>
-          </li>
-          <li class="rs-widget__person">
-            <span class="rs-widget__avatar" style="background:#05C168">D</span>
-            <span class="rs-widget__person-name">David Park</span>
-            <span class="rs-widget__person-role">Supporter</span>
-          </li>
-          <li class="rs-widget__person">
-            <span class="rs-widget__avatar" style="background:#22D3EE">L</span>
-            <span class="rs-widget__person-name">Lucia Torres</span>
-            <span class="rs-widget__person-role">Supporter</span>
-          </li>
-        </ul>
-      </div>
+        <!-- Send Idea / Asset for Approval -->
+        <div class="rs-widget__sub rs-widget__sub--approval">
+          <h3 class="rs-widget__title">Submit for Approval</h3>
+          <p class="rs-widget__approval-desc">Send an idea or asset to your campaign lead for review.</p>
+          <button class="rs-widget__approval-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            Send for Approval
+          </button>
+        </div>
 
-      <!-- Group Conversation button -->
-      <button class="rs-widget rs-widget--group-msg" id="group-msg-btn">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        <span>Group Conversation</span>
-      </button>
+        <!-- Group Conversation preview + button -->
+        <div class="rs-widget__sub rs-widget__sub--chat-preview">
+          <h3 class="rs-widget__title">Group Conversation</h3>
+          <div class="rs-widget__chat-messages">
+            <div class="rs-widget__chat-msg">
+              <span class="rs-widget__chat-author">@Sara Chen</span>
+              <span class="rs-widget__chat-text">Just confirmed the venue for Saturday's rally!</span>
+            </div>
+            <div class="rs-widget__chat-msg">
+              <span class="rs-widget__chat-author">@Marcus Rivera</span>
+              <span class="rs-widget__chat-text">Great work! I'll get the flyers distributed.</span>
+            </div>
+            <div class="rs-widget__chat-msg">
+              <span class="rs-widget__chat-author">@Ned Howey</span>
+              <span class="rs-widget__chat-text">Let's sync at 5 to review the run-of-show.</span>
+            </div>
+          </div>
+          <button class="rs-widget__chat-open-btn" id="group-msg-btn">Open Conversation</button>
+        </div>
+
+      </div>
 
     </div>
 
@@ -870,6 +946,7 @@
         </svg>
       </div>
       <span class="topbar__org-name">People's Movement</span>
+      <span class="topbar__group-name">Prospect Heights</span>
     </div>
     <div class="topbar__brand">
       <img src="images/logo-color.png" alt="Tectonica.AI" class="topbar__logo">
