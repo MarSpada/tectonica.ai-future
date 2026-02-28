@@ -185,6 +185,90 @@ const BOT_WELCOME = {
 };
 
 // ═══════════════════════════════════════════
+// BOT CHAT HISTORY (mock data)
+// ═══════════════════════════════════════════
+
+const BOT_HISTORY = {
+  'Visual Creation Bot': [
+    { title: 'Rally poster design', date: 'Today' },
+    { title: 'Social media banner set', date: 'Yesterday' },
+    { title: 'Email header graphic', date: '3 days ago' },
+    { title: 'Flyer for town hall event', date: 'Last week' },
+    { title: 'Instagram story templates', date: 'Feb 18' },
+  ],
+  'Find a Place to Organize': [
+    { title: 'Community hall search — downtown', date: 'Today' },
+    { title: 'Park permits for rally', date: '2 days ago' },
+    { title: 'Accessible venue options', date: 'Last week' },
+  ],
+  'Tech Assessment Bot': [
+    { title: 'CRM migration evaluation', date: 'Yesterday' },
+    { title: 'Email platform comparison', date: '4 days ago' },
+    { title: 'Data security audit', date: 'Feb 20' },
+  ],
+  'Field / Canvassing Bot': [
+    { title: 'Ward 7 walk list prep', date: 'Today' },
+    { title: 'Weekend canvass route plan', date: 'Yesterday' },
+    { title: 'Voter outreach script review', date: '3 days ago' },
+    { title: 'Canvasser training checklist', date: 'Last week' },
+  ],
+  'Relational Organizing Bot': [
+    { title: 'Network mapping — Ned\'s contacts', date: 'Yesterday' },
+    { title: 'Outreach sequence for allies', date: '5 days ago' },
+    { title: 'Relational ask templates', date: 'Feb 15' },
+  ],
+  'Events Management Bot': [
+    { title: 'Town hall logistics — March 5', date: 'Today' },
+    { title: 'RSVP tracker setup', date: '2 days ago' },
+    { title: 'Volunteer briefing agenda', date: 'Last week' },
+    { title: 'Post-event survey draft', date: 'Feb 19' },
+  ],
+  'Video Content Bot': [
+    { title: 'Campaign launch video script', date: 'Yesterday' },
+    { title: 'Testimonial interview plan', date: '3 days ago' },
+    { title: 'Social media clip edits', date: 'Last week' },
+  ],
+  'Content Writing Bot': [
+    { title: 'Fundraising email draft', date: 'Today' },
+    { title: 'Press release — policy win', date: 'Yesterday' },
+    { title: 'Volunteer newsletter copy', date: '4 days ago' },
+    { title: 'Op-ed on housing crisis', date: 'Feb 21' },
+  ],
+  'Distributed Fundraising Bot': [
+    { title: 'March fundraising drive plan', date: 'Today' },
+    { title: 'Donor thank-you sequence', date: '2 days ago' },
+    { title: 'Peer-to-peer page templates', date: 'Last week' },
+  ],
+  'Recruitment Bot': [
+    { title: 'Spring volunteer drive plan', date: 'Yesterday' },
+    { title: 'Onboarding flow for new members', date: '3 days ago' },
+    { title: 'Recruitment pitch deck', date: 'Feb 22' },
+  ],
+  'Data Analysis': [
+    { title: 'Voter turnout analysis — Ward 3', date: 'Today' },
+    { title: 'Survey results breakdown', date: '2 days ago' },
+    { title: 'Engagement trends Q1', date: 'Last week' },
+  ],
+};
+
+const BOT_HISTORY_DEFAULT = [
+  { title: 'Getting started', date: 'Today' },
+  { title: 'Previous session', date: 'Last week' },
+];
+
+function populateChatHistory(botName) {
+  const list = document.getElementById('bot-chat-history-list');
+  if (!list) return;
+  const items = BOT_HISTORY[botName] || BOT_HISTORY_DEFAULT;
+  list.innerHTML = items.map((item, i) =>
+    `<li class="bot-chat__history-item${i === 0 ? ' bot-chat__history-item--active' : ''}">
+      <span class="bot-chat__history-title">${item.title}</span>
+      <span class="bot-chat__history-date">${item.date}</span>
+    </li>`
+  ).join('');
+}
+
+// ═══════════════════════════════════════════
 // OPENAI CHAT INTEGRATION
 // ═══════════════════════════════════════════
 
@@ -193,7 +277,7 @@ let conversationHistory = [];
 let isStreaming = false;
 
 // Open bot chat for ANY bot card
-function openBotChat(botName) {
+function openBotChat(botName, imgSrc) {
   closeAllViews();
   currentBotName = botName;
   conversationHistory = [];
@@ -204,6 +288,17 @@ function openBotChat(botName) {
 
   // Update header
   document.querySelector('.bot-chat__header-title').textContent = botName;
+  if (imgSrc) {
+    const avatarEl = document.getElementById('bot-chat-avatar');
+    if (avatarEl) { avatarEl.src = imgSrc; avatarEl.alt = botName; }
+  }
+
+  // Show Studio button only for Visual Creation Bot
+  const studioBtn = document.getElementById('editor-toggle');
+  if (studioBtn) studioBtn.style.display = botName === 'Visual Creation Bot' ? 'flex' : 'none';
+
+  // Populate chat history sidebar
+  populateChatHistory(botName);
 
   // Clear messages and add welcome
   const messagesEl = document.getElementById('chat-messages');
@@ -239,7 +334,7 @@ function appendBotMessage(text) {
   msgDiv.className = 'bot-chat__msg bot-chat__msg--bot';
   msgDiv.innerHTML = `
     <div class="bot-chat__msg-avatar">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
     </div>
     <div class="bot-chat__msg-content">
       <span class="bot-chat__msg-name">${escapeHtml(currentBotName || 'Bot')}</span>
@@ -259,7 +354,7 @@ function showTyping() {
   typing.className = 'bot-chat__msg bot-chat__msg--bot bot-chat__msg--typing';
   typing.innerHTML = `
     <div class="bot-chat__msg-avatar">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
     </div>
     <div class="bot-chat__msg-content">
       <div class="bot-chat__typing">
@@ -384,7 +479,8 @@ function scrollToBottom() {
 document.querySelectorAll('.bot-card').forEach(card => {
   card.addEventListener('click', () => {
     const title = card.querySelector('.bot-card__title')?.textContent;
-    if (title) openBotChat(title);
+    const imgSrc = card.querySelector('.bot-card__img')?.src;
+    if (title) openBotChat(title, imgSrc);
   });
 });
 
@@ -468,3 +564,130 @@ const editorToggle = document.getElementById('editor-toggle');
 const editorClose = document.getElementById('editor-close');
 if (editorToggle) editorToggle.addEventListener('click', () => document.body.classList.toggle('editor-open'));
 if (editorClose) editorClose.addEventListener('click', () => document.body.classList.remove('editor-open'));
+
+// ═══════════════════════════════════════════
+// DRAG-TO-FAVORITES + CAROUSEL
+// ═══════════════════════════════════════════
+
+(function initDragAndCarousel() {
+  if (typeof Sortable === 'undefined') return;
+
+  const featuredContainer = document.querySelector('.category--featured');
+  const featuredCards = featuredContainer?.querySelector('.category__cards');
+  const btnLeft = document.getElementById('carousel-left');
+  const btnRight = document.getElementById('carousel-right');
+  if (!featuredCards) return;
+
+  // ─── Helpers ───
+
+  /** Get the names of all bots currently in the featured section */
+  function getFeaturedBotNames() {
+    return [...featuredCards.querySelectorAll('.bot-card__title')].map(t => t.textContent.trim());
+  }
+
+  /** Scroll amount = one card width + gap */
+  function getScrollStep() {
+    const card = featuredCards.querySelector('.bot-card');
+    return card ? card.offsetWidth + 14 : 144;
+  }
+
+  // ─── Carousel arrow logic ───
+  function updateCarouselArrows() {
+    if (!featuredCards || !btnLeft || !btnRight) return;
+    const { scrollLeft, scrollWidth, clientWidth } = featuredCards;
+    const hasOverflow = scrollWidth > clientWidth + 2;
+    btnLeft.classList.toggle('category__carousel-btn--visible', hasOverflow && scrollLeft > 4);
+    btnRight.classList.toggle('category__carousel-btn--visible', hasOverflow && scrollLeft < scrollWidth - clientWidth - 4);
+  }
+
+  featuredCards.addEventListener('scroll', updateCarouselArrows);
+  if (btnLeft) btnLeft.addEventListener('click', () => { featuredCards.scrollBy({ left: -getScrollStep(), behavior: 'smooth' }); });
+  if (btnRight) btnRight.addEventListener('click', () => { featuredCards.scrollBy({ left: getScrollStep(), behavior: 'smooth' }); });
+
+  // Observe resize to update arrows
+  new ResizeObserver(updateCarouselArrows).observe(featuredCards);
+  updateCarouselArrows();
+
+  // ─── Add remove button to a featured card ───
+  function addRemoveButton(card) {
+    if (card.querySelector('.bot-card__remove')) return; // already has one
+    const btn = document.createElement('button');
+    btn.className = 'bot-card__remove';
+    btn.title = 'Remove from Your Bots';
+    btn.innerHTML = '×';
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation(); // don't open bot chat
+      gsap.to(card, {
+        scale: 0.8, opacity: 0, duration: 0.25, ease: 'power2.in',
+        onComplete() {
+          card.remove();
+          setTimeout(updateCarouselArrows, 50);
+        }
+      });
+    });
+    card.appendChild(btn);
+  }
+
+  // Add remove buttons to existing featured cards
+  featuredCards.querySelectorAll('.bot-card').forEach(addRemoveButton);
+
+  // ─── Attach bot-card click listener ───
+  function attachCardClick(card) {
+    card.addEventListener('click', () => {
+      const title = card.querySelector('.bot-card__title')?.textContent;
+      const imgSrc = card.querySelector('.bot-card__img')?.src;
+      if (title) openBotChat(title, imgSrc);
+    });
+  }
+
+  // ─── SortableJS: Featured section (receives cards) ───
+  Sortable.create(featuredCards, {
+    group: { name: 'bots', pull: true, put: true },
+    animation: 200,
+    ghostClass: 'sortable-ghost',
+    chosenClass: 'sortable-chosen',
+    dragClass: 'sortable-drag',
+    sort: true,
+    onAdd(evt) {
+      const newName = evt.item.querySelector('.bot-card__title')?.textContent?.trim();
+      // ─── Prevent duplicates ───
+      const existing = getFeaturedBotNames();
+      const dupeCount = existing.filter(n => n === newName).length;
+      if (dupeCount > 1) {
+        // This card is a duplicate — remove it
+        evt.item.remove();
+        setTimeout(updateCarouselArrows, 50);
+        return;
+      }
+      // Add remove button + click handler
+      addRemoveButton(evt.item);
+      attachCardClick(evt.item);
+      // Update carousel
+      setTimeout(updateCarouselArrows, 50);
+      // Animate the new card in
+      gsap.from(evt.item, { scale: 0.8, opacity: 0, duration: 0.3, ease: 'power2.out', clearProps: 'all' });
+    },
+    onRemove() {
+      setTimeout(updateCarouselArrows, 50);
+    },
+    onSort() {
+      setTimeout(updateCarouselArrows, 50);
+    }
+  });
+
+  // ─── SortableJS: All other categories (source, clone mode) ───
+  document.querySelectorAll('.category:not(.category--featured) .category__cards').forEach(grid => {
+    Sortable.create(grid, {
+      group: { name: 'bots', pull: 'clone', put: false },
+      animation: 200,
+      ghostClass: 'sortable-ghost',
+      chosenClass: 'sortable-chosen',
+      dragClass: 'sortable-drag',
+      sort: false,
+      // Highlight featured drop zone
+      onStart() { featuredContainer?.classList.add('drag-over'); },
+      onEnd() { featuredContainer?.classList.remove('drag-over'); },
+    });
+  });
+
+})();
