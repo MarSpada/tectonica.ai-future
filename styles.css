@@ -834,7 +834,8 @@ body::after {
 /* ─── Connected Systems ─── */
 .rs-widget__systems-row {
   display: flex;
-  gap: 8px;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .rs-widget__system-btn {
@@ -1371,10 +1372,10 @@ body.group-chat-open .group-message-overlay {
   border-radius: var(--radius-lg);
   overflow: hidden;
   transition: all .35s cubic-bezier(.4, 0, .2, 1);
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 3 / 3.2;
   box-shadow: 0 2px 12px rgba(0, 0, 0, .06);
-  gap: 8px;
-  padding: 12px 10px 14px;
+  gap: 6px;
+  padding: 10px 8px 10px;
 }
 
 .bot-card:hover {
@@ -1384,7 +1385,7 @@ body.group-chat-open .group-message-overlay {
 
 /* Circle placeholder for future icon */
 .bot-card__circle {
-  width: 92%;
+  width: 75%;
   aspect-ratio: 1;
   height: auto;
   border-radius: 50%;
