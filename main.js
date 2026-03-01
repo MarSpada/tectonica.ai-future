@@ -50,9 +50,10 @@ function animateMessagesIn(selector) {
 
 // ─── Close all special views ───
 function closeAllViews() {
-  document.body.classList.remove('chat-mode', 'coach-mode', 'editor-open');
+  document.body.classList.remove('chat-mode', 'coach-mode', 'media-mode', 'editor-open');
   document.getElementById('bot-chat').style.display = 'none';
   document.getElementById('coach-view').style.display = 'none';
+  document.getElementById('media-view').style.display = 'none';
 }
 
 function returnToDashboard() {
@@ -72,7 +73,7 @@ const sidebarCollapse = document.getElementById('sidebar-collapse');
 if (sidebarCollapse) {
   sidebarCollapse.addEventListener('click', () => {
     // On small screens, toggle overlay instead
-    if (window.innerWidth < 800) {
+    if (window.innerWidth < 700) {
       document.body.classList.toggle('sidebar-open');
     } else {
       document.body.classList.toggle('sidebar-collapsed');
@@ -82,7 +83,7 @@ if (sidebarCollapse) {
 
 // Close overlay sidebar when clicking backdrop (small screens)
 document.addEventListener('click', e => {
-  if (window.innerWidth < 800 && document.body.classList.contains('sidebar-open')) {
+  if (window.innerWidth < 700 && document.body.classList.contains('sidebar-open')) {
     const sidebar = document.querySelector('.sidebar');
     if (!sidebar.contains(e.target)) {
       document.body.classList.remove('sidebar-open');
@@ -517,10 +518,22 @@ if (coachNav) {
   });
 }
 
+// ─── Group Media nav handler ───
+const mediaNav = document.getElementById('nav-media');
+if (mediaNav) {
+  mediaNav.addEventListener('click', e => {
+    e.preventDefault();
+    closeAllViews();
+    document.body.classList.add('media-mode');
+    document.getElementById('media-view').style.display = 'flex';
+    animateCardsIn('.media-gallery__card');
+  });
+}
+
 // ─── Other nav items — return to dashboard ───
 document.querySelectorAll('.sidebar__nav-item').forEach(item => {
   item.addEventListener('click', () => {
-    if (item.id === 'nav-coach') return;
+    if (item.id === 'nav-coach' || item.id === 'nav-media') return;
     closeAllViews();
     gsap.from('.bot-card', { y: 20, opacity: 0, duration: 0.35, stagger: 0.025, ease: 'power2.out', clearProps: 'all' });
   });

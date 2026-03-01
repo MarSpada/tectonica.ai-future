@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Movement Intelligence — Tectonica.AI</title>
   <!-- Google Sans loaded via @font-face in styles.css -->
+  <link href="https://fonts.googleapis.com/css?family=Material+Icons+Two+Tone&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.6/Sortable.min.js" defer></script>
@@ -40,6 +41,10 @@
       <!-- Bot Chats section -->
       <div class="sidebar__bot-chats">
         <h3 class="sidebar__section-title">Bot Chats</h3>
+        <div class="sidebar__bot-search">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" class="sidebar__bot-search-input" placeholder="Search chats...">
+        </div>
         <ul class="sidebar__chat-list">
           <li class="sidebar__chat-item">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
@@ -185,27 +190,27 @@
         </div>
         <div class="category__cards">
           <div class="bot-card" data-category="content">
-            <div class="bot-card__circle"></div>
+            <div class="bot-card__circle"><span class="material-icons-two-tone bot-card__icon">palette</span></div>
             <h3 class="bot-card__title">Graphics Creation</h3>
             <div class="bot-card__overlay"><p>Design graphics, social media cards, posters, and visual assets for your campaign</p></div>
           </div>
           <div class="bot-card" data-category="organizer">
-            <div class="bot-card__circle"></div>
+            <div class="bot-card__circle"><span class="material-icons-two-tone bot-card__icon">directions_walk</span></div>
             <h3 class="bot-card__title">Canvassing Planner</h3>
             <div class="bot-card__overlay"><p>Plan door-to-door routes, manage walk lists, and log canvass results</p></div>
           </div>
           <div class="bot-card" data-category="organizer">
-            <div class="bot-card__circle"></div>
+            <div class="bot-card__circle"><span class="material-icons-two-tone bot-card__icon">groups</span></div>
             <h3 class="bot-card__title">Group Leadership Coach</h3>
             <div class="bot-card__overlay"><p>AI coaching for group leaders — strategy guidance, feedback, and best practices</p></div>
           </div>
           <div class="bot-card" data-category="organizer">
-            <div class="bot-card__circle"></div>
+            <div class="bot-card__circle"><span class="material-icons-two-tone bot-card__icon">event</span></div>
             <h3 class="bot-card__title">Events Planning + Management</h3>
             <div class="bot-card__overlay"><p>Create events, send invites, track RSVPs, and manage day-of logistics</p></div>
           </div>
           <div class="bot-card" data-category="admin">
-            <div class="bot-card__circle"></div>
+            <div class="bot-card__circle"><span class="material-icons-two-tone bot-card__icon">volunteer_activism</span></div>
             <h3 class="bot-card__title">Creating People Power</h3>
             <div class="bot-card__overlay"><p>Knowledge center — organizing principles, training materials, and best practices</p></div>
           </div>
@@ -228,47 +233,47 @@
         </div>
         <div class="category__cards">
           <div class="bot-card" data-category="organizer">
-            <div class="bot-card__circle"></div>
+            <div class="bot-card__circle"><span class="material-icons-two-tone bot-card__icon">help_outline</span></div>
             <h3 class="bot-card__title">Getting Started + Help</h3>
             <div class="bot-card__overlay"><p>Onboarding guide, FAQs, and step-by-step help for new group leaders</p></div>
           </div>
           <div class="bot-card" data-category="organizer">
-            <div class="bot-card__circle"></div>
+            <div class="bot-card__circle"><span class="material-icons-two-tone bot-card__icon">map</span></div>
             <h3 class="bot-card__title">Local Strategy Planning</h3>
             <div class="bot-card__overlay"><p>Develop local campaign strategies, identify targets, and plan tactical actions</p></div>
           </div>
           <div class="bot-card" data-category="organizer">
-            <div class="bot-card__circle"></div>
+            <div class="bot-card__circle"><span class="material-icons-two-tone bot-card__icon">person_add</span></div>
             <h3 class="bot-card__title">Recruitment Planning</h3>
             <div class="bot-card__overlay"><p>Plan and optimize your volunteer and supporter recruitment strategy</p></div>
           </div>
           <div class="bot-card" data-category="organizer">
-            <div class="bot-card__circle"></div>
+            <div class="bot-card__circle"><span class="material-icons-two-tone bot-card__icon">flag</span></div>
             <h3 class="bot-card__title">Action Planning</h3>
             <div class="bot-card__overlay"><p>Plan direct actions, rallies, and coordinated campaign activities</p></div>
           </div>
           <div class="bot-card" data-category="organizer">
-            <div class="bot-card__circle"></div>
+            <div class="bot-card__circle"><span class="material-icons-two-tone bot-card__icon">event</span></div>
             <h3 class="bot-card__title">Events Planning + Management</h3>
             <div class="bot-card__overlay"><p>Create events, send invites, track RSVPs, and manage day-of logistics</p></div>
           </div>
           <div class="bot-card" data-category="organizer">
-            <div class="bot-card__circle"></div>
+            <div class="bot-card__circle"><span class="material-icons-two-tone bot-card__icon">contacts</span></div>
             <h3 class="bot-card__title">Relationship/Contact Mng</h3>
             <div class="bot-card__overlay"><p>Manage contacts, track interactions, and maintain supporter relationships</p></div>
           </div>
           <div class="bot-card" data-category="organizer">
-            <div class="bot-card__circle"></div>
+            <div class="bot-card__circle"><span class="material-icons-two-tone bot-card__icon">groups</span></div>
             <h3 class="bot-card__title">Group Leadership Coach</h3>
             <div class="bot-card__overlay"><p>AI coaching for group leaders — strategy guidance, feedback, and best practices</p></div>
           </div>
           <div class="bot-card" data-category="organizer">
-            <div class="bot-card__circle"></div>
+            <div class="bot-card__circle"><span class="material-icons-two-tone bot-card__icon">paid</span></div>
             <h3 class="bot-card__title">Group Fundraising</h3>
             <div class="bot-card__overlay"><p>Plan and execute distributed fundraising campaigns and track progress</p></div>
           </div>
           <div class="bot-card" data-category="organizer">
-            <div class="bot-card__circle"></div>
+            <div class="bot-card__circle"><span class="material-icons-two-tone bot-card__icon">directions_walk</span></div>
             <h3 class="bot-card__title">Canvassing Planner</h3>
             <div class="bot-card__overlay"><p>Plan door-to-door routes, manage walk lists, and log canvass results</p></div>
           </div>
@@ -285,27 +290,27 @@
         </div>
         <div class="category__cards">
           <div class="bot-card" data-category="content">
-            <div class="bot-card__circle"></div>
+            <div class="bot-card__circle"><span class="material-icons-two-tone bot-card__icon">palette</span></div>
             <h3 class="bot-card__title">Graphics Creation</h3>
             <div class="bot-card__overlay"><p>Design graphics, social media cards, posters, and visual assets for your campaign</p></div>
           </div>
           <div class="bot-card" data-category="content">
-            <div class="bot-card__circle"></div>
+            <div class="bot-card__circle"><span class="material-icons-two-tone bot-card__icon">description</span></div>
             <h3 class="bot-card__title">Written Content</h3>
             <div class="bot-card__overlay"><p>Write emails, social posts, press releases, speeches, and talking points</p></div>
           </div>
           <div class="bot-card" data-category="content">
-            <div class="bot-card__circle"></div>
+            <div class="bot-card__circle"><span class="material-icons-two-tone bot-card__icon">email</span></div>
             <h3 class="bot-card__title">Distributed Email</h3>
             <div class="bot-card__overlay"><p>Create, manage, and distribute email campaigns to your supporters</p></div>
           </div>
           <div class="bot-card" data-category="content">
-            <div class="bot-card__circle"></div>
+            <div class="bot-card__circle"><span class="material-icons-two-tone bot-card__icon">web</span></div>
             <h3 class="bot-card__title">Set-Up/Manage Group Webpage</h3>
             <div class="bot-card__overlay"><p>Create and manage your group's campaign website and local landing pages</p></div>
           </div>
           <div class="bot-card" data-category="content">
-            <div class="bot-card__circle"></div>
+            <div class="bot-card__circle"><span class="material-icons-two-tone bot-card__icon">videocam</span></div>
             <h3 class="bot-card__title">Video Creation</h3>
             <div class="bot-card__overlay"><p>Create compelling video content — scripts, storyboards, editing, and distribution</p></div>
           </div>
@@ -322,22 +327,22 @@
         </div>
         <div class="category__cards">
           <div class="bot-card" data-category="organizer">
-            <div class="bot-card__circle"></div>
+            <div class="bot-card__circle"><span class="material-icons-two-tone bot-card__icon">ads_click</span></div>
             <h3 class="bot-card__title">Ad Placement</h3>
             <div class="bot-card__overlay"><p>Create, review, and distribute advertising content across platforms</p></div>
           </div>
           <div class="bot-card" data-category="organizer">
-            <div class="bot-card__circle"></div>
+            <div class="bot-card__circle"><span class="material-icons-two-tone bot-card__icon">share</span></div>
             <h3 class="bot-card__title">Social Media</h3>
             <div class="bot-card__overlay"><p>Manage social media presence, schedule posts, and track engagement</p></div>
           </div>
           <div class="bot-card" data-category="organizer">
-            <div class="bot-card__circle"></div>
+            <div class="bot-card__circle"><span class="material-icons-two-tone bot-card__icon">build</span></div>
             <h3 class="bot-card__title">Tech Tools How-To</h3>
             <div class="bot-card__overlay"><p>Learn and effectively use technology tools for your campaigns</p></div>
           </div>
           <div class="bot-card" data-category="organizer">
-            <div class="bot-card__circle"></div>
+            <div class="bot-card__circle"><span class="material-icons-two-tone bot-card__icon">campaign</span></div>
             <h3 class="bot-card__title">Targeted Advocacy</h3>
             <div class="bot-card__overlay"><p>Plan targeted advocacy — identify decision-makers and coordinate pressure</p></div>
           </div>
@@ -354,27 +359,27 @@
         </div>
         <div class="category__cards">
           <div class="bot-card" data-category="admin">
-            <div class="bot-card__circle"></div>
+            <div class="bot-card__circle"><span class="material-icons-two-tone bot-card__icon">volunteer_activism</span></div>
             <h3 class="bot-card__title">Creating People Power</h3>
             <div class="bot-card__overlay"><p>Knowledge center — organizing principles, training materials, and movement building best practices</p></div>
           </div>
           <div class="bot-card" data-category="admin">
-            <div class="bot-card__circle"></div>
+            <div class="bot-card__circle"><span class="material-icons-two-tone bot-card__icon">trending_up</span></div>
             <h3 class="bot-card__title">Recruitment Progress</h3>
             <div class="bot-card__overlay"><p>Track and analyze recruitment metrics, conversion rates, and growth trends</p></div>
           </div>
           <div class="bot-card" data-category="admin">
-            <div class="bot-card__circle"></div>
+            <div class="bot-card__circle"><span class="material-icons-two-tone bot-card__icon">mark_email_read</span></div>
             <h3 class="bot-card__title">Email Performance</h3>
             <div class="bot-card__overlay"><p>Analyze email open rates, click-through rates, and campaign effectiveness</p></div>
           </div>
           <div class="bot-card" data-category="admin">
-            <div class="bot-card__circle"></div>
+            <div class="bot-card__circle"><span class="material-icons-two-tone bot-card__icon">hub</span></div>
             <h3 class="bot-card__title">Networks, Resources, + Orgs</h3>
             <div class="bot-card__overlay"><p>Connect with allied organizations, shared resources, and coalition networks</p></div>
           </div>
           <div class="bot-card" data-category="admin">
-            <div class="bot-card__circle"></div>
+            <div class="bot-card__circle"><span class="material-icons-two-tone bot-card__icon">how_to_vote</span></div>
             <h3 class="bot-card__title">Group Decision Making</h3>
             <div class="bot-card__overlay"><p>Facilitate collaborative decision-making from proposals to implementation</p></div>
           </div>
@@ -662,6 +667,191 @@
     </aside>
   </section>
 
+  <!-- ═══════════ GROUP MEDIA GALLERY ═══════════ -->
+  <section class="media-gallery" id="media-view" style="display:none">
+    <header class="media-gallery__header">
+      <div class="media-gallery__header-left">
+        <h1 class="media-gallery__title">Group Media</h1>
+        <span class="media-gallery__count">48 items</span>
+      </div>
+      <button class="media-gallery__upload-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Upload Media
+      </button>
+    </header>
+
+    <div class="media-gallery__toolbar">
+      <div class="media-gallery__search-wrap">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" class="media-gallery__search" placeholder="Search media...">
+      </div>
+      <div class="media-gallery__filters">
+        <button class="media-gallery__filter media-gallery__filter--active">All</button>
+        <button class="media-gallery__filter">Images</button>
+        <button class="media-gallery__filter">Videos</button>
+        <button class="media-gallery__filter">Documents</button>
+      </div>
+      <div class="media-gallery__view-toggle">
+        <button class="media-gallery__view-btn media-gallery__view-btn--active" title="Grid view">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        </button>
+        <button class="media-gallery__view-btn" title="List view">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="media-gallery__grid">
+      <!-- Row 1 -->
+      <div class="media-gallery__card">
+        <div class="media-gallery__thumb" style="background:#A8D8EA">
+          <span class="media-gallery__badge media-gallery__badge--img">IMG</span>
+        </div>
+        <div class="media-gallery__info">
+          <span class="media-gallery__filename">rally-poster-march.png</span>
+          <span class="media-gallery__meta-line">Mar 12, 2026 · 2.4 MB</span>
+        </div>
+      </div>
+      <div class="media-gallery__card">
+        <div class="media-gallery__thumb" style="background:#FFB5A7">
+          <span class="media-gallery__badge media-gallery__badge--vid">VID</span>
+        </div>
+        <div class="media-gallery__info">
+          <span class="media-gallery__filename">volunteer-training.mp4</span>
+          <span class="media-gallery__meta-line">Mar 10, 2026 · 84 MB</span>
+        </div>
+      </div>
+      <div class="media-gallery__card">
+        <div class="media-gallery__thumb" style="background:#B5EAD7">
+          <span class="media-gallery__badge media-gallery__badge--doc">DOC</span>
+        </div>
+        <div class="media-gallery__info">
+          <span class="media-gallery__filename">canvassing-script-v3.docx</span>
+          <span class="media-gallery__meta-line">Mar 8, 2026 · 156 KB</span>
+        </div>
+      </div>
+      <div class="media-gallery__card">
+        <div class="media-gallery__thumb" style="background:#FFDAC1">
+          <span class="media-gallery__badge media-gallery__badge--img">IMG</span>
+        </div>
+        <div class="media-gallery__info">
+          <span class="media-gallery__filename">social-card-template.png</span>
+          <span class="media-gallery__meta-line">Mar 7, 2026 · 1.1 MB</span>
+        </div>
+      </div>
+      <div class="media-gallery__card">
+        <div class="media-gallery__thumb" style="background:#E0BBE4">
+          <span class="media-gallery__badge media-gallery__badge--pdf">PDF</span>
+        </div>
+        <div class="media-gallery__info">
+          <span class="media-gallery__filename">q1-impact-report.pdf</span>
+          <span class="media-gallery__meta-line">Mar 5, 2026 · 3.2 MB</span>
+        </div>
+      </div>
+      <!-- Row 2 -->
+      <div class="media-gallery__card">
+        <div class="media-gallery__thumb" style="background:#A8D8EA">
+          <span class="media-gallery__badge media-gallery__badge--img">IMG</span>
+        </div>
+        <div class="media-gallery__info">
+          <span class="media-gallery__filename">team-photo-retreat.jpg</span>
+          <span class="media-gallery__meta-line">Mar 3, 2026 · 4.7 MB</span>
+        </div>
+      </div>
+      <div class="media-gallery__card">
+        <div class="media-gallery__thumb" style="background:#B5EAD7">
+          <span class="media-gallery__badge media-gallery__badge--doc">DOC</span>
+        </div>
+        <div class="media-gallery__info">
+          <span class="media-gallery__filename">press-release-draft.docx</span>
+          <span class="media-gallery__meta-line">Feb 28, 2026 · 89 KB</span>
+        </div>
+      </div>
+      <div class="media-gallery__card">
+        <div class="media-gallery__thumb" style="background:#FFB5A7">
+          <span class="media-gallery__badge media-gallery__badge--vid">VID</span>
+        </div>
+        <div class="media-gallery__info">
+          <span class="media-gallery__filename">event-recap-feb.mp4</span>
+          <span class="media-gallery__meta-line">Feb 26, 2026 · 120 MB</span>
+        </div>
+      </div>
+      <div class="media-gallery__card">
+        <div class="media-gallery__thumb" style="background:#FFDAC1">
+          <span class="media-gallery__badge media-gallery__badge--img">IMG</span>
+        </div>
+        <div class="media-gallery__info">
+          <span class="media-gallery__filename">flyer-community-day.png</span>
+          <span class="media-gallery__meta-line">Feb 24, 2026 · 1.8 MB</span>
+        </div>
+      </div>
+      <div class="media-gallery__card">
+        <div class="media-gallery__thumb" style="background:#E0BBE4">
+          <span class="media-gallery__badge media-gallery__badge--pdf">PDF</span>
+        </div>
+        <div class="media-gallery__info">
+          <span class="media-gallery__filename">fundraising-deck.pdf</span>
+          <span class="media-gallery__meta-line">Feb 20, 2026 · 5.1 MB</span>
+        </div>
+      </div>
+      <!-- Row 3 -->
+      <div class="media-gallery__card">
+        <div class="media-gallery__thumb" style="background:#A8D8EA">
+          <span class="media-gallery__badge media-gallery__badge--img">IMG</span>
+        </div>
+        <div class="media-gallery__info">
+          <span class="media-gallery__filename">banner-website-hero.png</span>
+          <span class="media-gallery__meta-line">Feb 18, 2026 · 980 KB</span>
+        </div>
+      </div>
+      <div class="media-gallery__card">
+        <div class="media-gallery__thumb" style="background:#B5EAD7">
+          <span class="media-gallery__badge media-gallery__badge--doc">DOC</span>
+        </div>
+        <div class="media-gallery__info">
+          <span class="media-gallery__filename">talking-points-housing.docx</span>
+          <span class="media-gallery__meta-line">Feb 15, 2026 · 67 KB</span>
+        </div>
+      </div>
+      <div class="media-gallery__card">
+        <div class="media-gallery__thumb" style="background:#FFB5A7">
+          <span class="media-gallery__badge media-gallery__badge--vid">VID</span>
+        </div>
+        <div class="media-gallery__info">
+          <span class="media-gallery__filename">testimonial-maria.mp4</span>
+          <span class="media-gallery__meta-line">Feb 12, 2026 · 45 MB</span>
+        </div>
+      </div>
+      <div class="media-gallery__card">
+        <div class="media-gallery__thumb" style="background:#FFDAC1">
+          <span class="media-gallery__badge media-gallery__badge--img">IMG</span>
+        </div>
+        <div class="media-gallery__info">
+          <span class="media-gallery__filename">infographic-impact.png</span>
+          <span class="media-gallery__meta-line">Feb 10, 2026 · 2.1 MB</span>
+        </div>
+      </div>
+      <div class="media-gallery__card">
+        <div class="media-gallery__thumb" style="background:#E0BBE4">
+          <span class="media-gallery__badge media-gallery__badge--pdf">PDF</span>
+        </div>
+        <div class="media-gallery__info">
+          <span class="media-gallery__filename">volunteer-handbook.pdf</span>
+          <span class="media-gallery__meta-line">Feb 8, 2026 · 8.4 MB</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="media-gallery__pagination">
+      <button class="media-gallery__page-btn media-gallery__page-btn--active">1</button>
+      <button class="media-gallery__page-btn">2</button>
+      <button class="media-gallery__page-btn">3</button>
+      <button class="media-gallery__page-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+      </button>
+    </div>
+  </section>
+
   <!-- ═══════════ RIGHT SIDEBAR ═══════════ -->
   <aside class="right-sidebar">
     <h2 class="right-sidebar__headline">Group Dashboard</h2>
@@ -671,7 +861,7 @@
       <div class="rs-widget rs-widget--new-members">
         <h3 class="rs-widget__title">New Sign-Ups</h3>
         <ul class="rs-widget__new-list">
-          <li class="rs-widget__new-person rs-widget__new-person--urgent">
+          <li class="rs-widget__new-person">
             <span class="rs-widget__avatar" style="background:#FD883C">J</span>
             <span class="rs-widget__new-name">John Doe</span>
             <span class="rs-widget__new-time rs-widget__new-time--red">Signed up 39 hrs. ago</span>
@@ -761,10 +951,11 @@
         <div class="rs-widget__progress-bar rs-widget__progress-bar--inline"><div class="rs-widget__progress-fill rs-widget__progress-fill--blue" style="width:92%"></div></div>
       </div>
 
-      <!-- Row 8-9: Submit for Approval (cols 9-12) -->
+      <!-- Row 8-9: Request Approval (cols 9-12) -->
       <div class="rs-widget rs-widget--approval">
-        <h3 class="rs-widget__title">Submit for Approval</h3>
-        <button class="rs-widget__approval-btn">Send an Idea</button>
+        <h3 class="rs-widget__title">Request Approval</h3>
+        <p class="rs-widget__approval-desc">Send an idea or asset for approval</p>
+        <button class="rs-widget__approval-btn">Start</button>
       </div>
 
       <!-- Row 10-14: Connected Systems (cols 9-12) -->
