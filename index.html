@@ -17,13 +17,7 @@
     <div class="sidebar__top">
       <!-- Nav -->
       <nav class="sidebar__nav">
-        <a href="#" class="sidebar__nav-item sidebar__nav-item--active">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-          <div class="sidebar__nav-text">
-            <span class="sidebar__nav-label">Action Center</span>
-          </div>
-        </a>
-        <a href="#" class="sidebar__nav-item" id="nav-coach">
+        <a href="#" class="sidebar__nav-item sidebar__nav-item--active" id="nav-coach">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
           <div class="sidebar__nav-text">
             <span class="sidebar__nav-label">Group Coach Bot</span>
@@ -42,6 +36,25 @@
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         <span>Leaders &amp; Organizers</span>
       </button>
+
+      <!-- Bot Chats section -->
+      <div class="sidebar__bot-chats">
+        <h3 class="sidebar__section-title">Bot Chats</h3>
+        <ul class="sidebar__chat-list">
+          <li class="sidebar__chat-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span>Graphics Creation</span>
+          </li>
+          <li class="sidebar__chat-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span>Canvassing Planner</span>
+          </li>
+          <li class="sidebar__chat-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span>Events Planning</span>
+          </li>
+        </ul>
+      </div>
     </div>
 
 
@@ -658,10 +671,10 @@
       <div class="rs-widget rs-widget--new-members">
         <h3 class="rs-widget__title">New Sign-Ups</h3>
         <ul class="rs-widget__new-list">
-          <li class="rs-widget__new-person">
+          <li class="rs-widget__new-person rs-widget__new-person--urgent">
             <span class="rs-widget__avatar" style="background:#FD883C">J</span>
             <span class="rs-widget__new-name">John Doe</span>
-            <span class="rs-widget__new-time">Signed up 10 hrs. ago</span>
+            <span class="rs-widget__new-time rs-widget__new-time--red">Signed up 39 hrs. ago</span>
           </li>
           <li class="rs-widget__new-person">
             <span class="rs-widget__avatar" style="background:#E04EBA">M</span>
@@ -724,8 +737,12 @@
           <span class="rs-widget__big-number">$1,500</span>
           <span class="rs-widget__goal-target">of $1,900</span>
         </div>
+        <p class="rs-widget__total-raised">Total Raised: <strong>$12,340</strong></p>
         <div class="rs-widget__progress-bar"><div class="rs-widget__progress-fill" style="width:79%"></div></div>
-        <p class="rs-widget__budget-line">Monthly Supply and Print Budget: <strong>$150</strong></p>
+        <div class="rs-widget__budget-block">
+          <span class="rs-widget__budget-label">Monthly Supply &amp; Print Budget</span>
+          <span class="rs-widget__budget-amount">$150</span>
+        </div>
         <button class="rs-widget__btn rs-widget__btn--accent">Request Reimbursement</button>
       </div>
 
