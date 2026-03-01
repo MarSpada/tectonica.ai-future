@@ -470,11 +470,11 @@ body::after {
   gap: 8px;
 }
 
-/* ─── Widget Grid (2-column) ─── */
+/* ─── Widget Grid (3-column) ─── */
 .right-sidebar__grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
 }
 
 /* ─── Widget Base ─── */
@@ -511,7 +511,6 @@ body::after {
 
 /* ─── Actions (full width) ─── */
 .rs-widget--actions {
-  grid-column: 1 / -1;
   background: #f0e6ff;
 }
 
@@ -549,24 +548,60 @@ body::after {
   flex-shrink: 0;
 }
 
-/* Full-width widgets */
-.rs-widget--actions,
+/* Full-width widgets (all 3 cols) */
 .rs-widget--full {
   grid-column: 1 / -1;
 }
 
-/* Tall widget — spans 3 rows in left column */
-.rs-widget--tall {
-  grid-row: span 3;
+/* Span 2 columns */
+.rs-widget--span2 {
+  grid-column: span 2;
+}
+
+/* Tall widget — spans 2 rows */
+.rs-widget--tall2 {
+  grid-row: span 2;
   display: flex;
   flex-direction: column;
 }
-.rs-widget--tall .rs-widget__people-list {
-  flex: 1;
-  overflow-y: auto;
+
+/* ─── New Sign-Ups Widget ─── */
+.rs-widget--new-members { background: #fef3c7; }
+.rs-widget__new-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
-.rs-widget--tall .rs-widget__recruit-btn {
-  margin-top: auto;
+.rs-widget__new-person {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.rs-widget__new-name {
+  font-size: .78rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.rs-widget__new-time {
+  font-size: .68rem;
+  color: var(--text-muted);
+  margin-left: auto;
+}
+.rs-widget__new-hint {
+  font-size: .68rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* ─── Budget line (fundraising) ─── */
+.rs-widget__budget-line {
+  font-size: .7rem;
+  color: var(--text-secondary);
+  margin: 8px 0 6px;
 }
 
 /* ─── Per-Widget Colors ─── */

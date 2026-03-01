@@ -15,12 +15,6 @@
   <!-- ═══════════ SIDEBAR ═══════════ -->
   <aside class="sidebar">
     <div class="sidebar__top">
-      <!-- Search -->
-      <div class="sidebar__search">
-        <svg class="sidebar__search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input type="text" placeholder="Search for..." class="sidebar__search-input">
-      </div>
-
       <!-- Nav -->
       <nav class="sidebar__nav">
         <a href="#" class="sidebar__nav-item sidebar__nav-item--active">
@@ -32,7 +26,7 @@
         <a href="#" class="sidebar__nav-item" id="nav-coach">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
           <div class="sidebar__nav-text">
-            <span class="sidebar__nav-label">AI Campaign Coach</span>
+            <span class="sidebar__nav-label">Group Coach Bot</span>
           </div>
         </a>
         <a href="#" class="sidebar__nav-item" id="nav-media">
@@ -183,27 +177,6 @@
             </div>
             <h3 class="bot-card__title">Graphic Creation Bot</h3>
             <div class="bot-card__overlay"><p>Design graphics, social media cards, posters, and visual assets for your campaign</p></div>
-          </div>
-          <div class="bot-card" data-category="organizer">
-            <div class="bot-card__circle">
-              <img src="images/bot avatars/02-find-a-place.png" alt="" class="bot-card__avatar">
-            </div>
-            <h3 class="bot-card__title">Find a Place to Organize</h3>
-            <div class="bot-card__overlay"><p>Discover venues, community spaces, and locations for meetings, rallies, and events</p></div>
-          </div>
-          <div class="bot-card" data-category="content">
-            <div class="bot-card__circle">
-              <img src="images/bot avatars/03-tech-assessment.png" alt="" class="bot-card__avatar">
-            </div>
-            <h3 class="bot-card__title">Tech Assessment Bot</h3>
-            <div class="bot-card__overlay"><p>Evaluate your tech stack, identify gaps, and get tool recommendations</p></div>
-          </div>
-          <div class="bot-card" data-category="organizer">
-            <div class="bot-card__circle">
-              <img src="images/bot avatars/04-group-placement.png" alt="" class="bot-card__avatar">
-            </div>
-            <h3 class="bot-card__title">Group Placement Bot</h3>
-            <div class="bot-card__overlay"><p>Match volunteers to the right teams based on skills, interests, and availability</p></div>
           </div>
           <div class="bot-card" data-category="organizer">
             <div class="bot-card__circle">
@@ -692,10 +665,47 @@
 
   <!-- ═══════════ RIGHT SIDEBAR ═══════════ -->
   <aside class="right-sidebar">
-    <h2 class="right-sidebar__headline">Group Updates</h2>
+    <h2 class="right-sidebar__headline">Group Dashboard</h2>
     <div class="right-sidebar__grid">
 
-      <!-- Group actions to take today — always full width, no resize -->
+      <!-- Row 1: New Sign-Ups (full width) -->
+      <div class="rs-widget rs-widget--new-members rs-widget--full">
+        <h3 class="rs-widget__title">New Sign-Ups</h3>
+        <ul class="rs-widget__new-list">
+          <li class="rs-widget__new-person">
+            <span class="rs-widget__avatar" style="background:#FD883C">J</span>
+            <span class="rs-widget__new-name">John Doe</span>
+            <span class="rs-widget__new-time">Signed up 10 hrs. ago</span>
+          </li>
+          <li class="rs-widget__new-person">
+            <span class="rs-widget__avatar" style="background:#E04EBA">M</span>
+            <span class="rs-widget__new-name">Mary Doe</span>
+            <span class="rs-widget__new-time">Signed up 8 hrs. ago</span>
+          </li>
+        </ul>
+        <p class="rs-widget__new-hint"><a href="#" class="rs-widget__alert-link">Contact them within 48 hrs</a> for best results or <a href="#" class="rs-widget__alert-link">assign to another person</a>.</p>
+      </div>
+
+      <!-- Row 2: Open Conversations (2 cols) | Actions (1 col) -->
+      <div class="rs-widget rs-widget--chat-preview rs-widget--span2">
+        <h3 class="rs-widget__title">Group Conversation</h3>
+        <div class="rs-widget__chat-messages">
+          <div class="rs-widget__chat-msg">
+            <span class="rs-widget__chat-author">@Sara Chen</span>
+            <span class="rs-widget__chat-text">Just confirmed the venue for Saturday's rally!</span>
+          </div>
+          <div class="rs-widget__chat-msg">
+            <span class="rs-widget__chat-author">@Marcus Rivera</span>
+            <span class="rs-widget__chat-text">Great work! I'll get the flyers distributed.</span>
+          </div>
+          <div class="rs-widget__chat-msg">
+            <span class="rs-widget__chat-author">@Ned Howey</span>
+            <span class="rs-widget__chat-text">Let's sync at 5 to review the run-of-show.</span>
+          </div>
+        </div>
+        <button class="rs-widget__chat-open-btn" id="group-msg-btn">Open Conversation</button>
+      </div>
+
       <div class="rs-widget rs-widget--actions">
         <h3 class="rs-widget__title">Group Actions to Take Today</h3>
         <ul class="rs-widget__action-list">
@@ -727,24 +737,21 @@
         </ul>
       </div>
 
-      <!-- Fundraising Goal (half) -->
-      <div class="rs-widget rs-widget--money">
+      <!-- Row 3-4: Fundraising (spans 2 rows) | Recruitment | Approval -->
+      <div class="rs-widget rs-widget--money rs-widget--tall2">
         <div class="rs-widget__icon-row">
           <svg class="rs-widget__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-          <h3 class="rs-widget__title">Fundraising Goal</h3>
+          <h3 class="rs-widget__title">Current Month Fundraising Goal</h3>
         </div>
         <div class="rs-widget__goal">
-          <span class="rs-widget__big-number">$9,993</span>
-          <span class="rs-widget__goal-target">of $15,000</span>
+          <span class="rs-widget__big-number">$1,500</span>
+          <span class="rs-widget__goal-target">of $1,900</span>
         </div>
-        <div class="rs-widget__progress-bar"><div class="rs-widget__progress-fill" style="width:66.6%"></div></div>
-        <div class="rs-widget__btn-row">
-          <button class="rs-widget__btn">Supply &amp; Print Budget</button>
-          <button class="rs-widget__btn rs-widget__btn--accent">Request Reimbursement</button>
-        </div>
+        <div class="rs-widget__progress-bar"><div class="rs-widget__progress-fill" style="width:79%"></div></div>
+        <p class="rs-widget__budget-line">Monthly Supply and Print Budget: <strong>$150</strong></p>
+        <button class="rs-widget__btn rs-widget__btn--accent">Request Reimbursement</button>
       </div>
 
-      <!-- Recruitment Goal (half) -->
       <div class="rs-widget rs-widget--people">
         <div class="rs-widget__icon-row">
           <svg class="rs-widget__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
@@ -763,13 +770,49 @@
         <div class="rs-widget__progress-bar"><div class="rs-widget__progress-fill rs-widget__progress-fill--blue" style="width:40%"></div></div>
       </div>
 
-      <!-- Group Directory (left col, spans 3 rows) -->
-      <div class="rs-widget rs-widget--directory rs-widget--tall">
-        <h3 class="rs-widget__title">Group Directory</h3>
-        <div class="rs-widget__dir-alert">
-          <svg class="rs-widget__alert-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
-          <p class="rs-widget__alert-text"><strong>2 new:</strong> John Doe &amp; Mary Doe. <a href="#" class="rs-widget__alert-link">Contact within 48 hrs</a> or <a href="#" class="rs-widget__alert-link">refer to another group</a>.</p>
+      <div class="rs-widget rs-widget--approval">
+        <h3 class="rs-widget__title">Submit for Approval</h3>
+        <p class="rs-widget__approval-desc">Send an idea or asset for review.</p>
+        <button class="rs-widget__approval-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          Send for Approval
+        </button>
+      </div>
+
+      <!-- Row 4 cont: Hours Volunteered | Connected Systems -->
+      <div class="rs-widget rs-widget--hours">
+        <h3 class="rs-widget__title">Hours Volunteered</h3>
+        <div class="rs-widget__goal">
+          <span class="rs-widget__big-number rs-widget__big-number--green">126</span>
+          <span class="rs-widget__goal-target">this month</span>
         </div>
+        <div class="rs-widget__progress-bar"><div class="rs-widget__progress-fill rs-widget__progress-fill--green" style="width:63%"></div></div>
+      </div>
+
+      <div class="rs-widget rs-widget--systems">
+        <h3 class="rs-widget__title">Connected Systems</h3>
+        <div class="rs-widget__systems-row">
+          <button class="rs-widget__system-btn">
+            <span class="rs-widget__system-dot rs-widget__system-dot--on"></span>
+            <span class="rs-widget__system-name">Action Network</span>
+            <a class="rs-widget__system-more" href="#">more</a>
+          </button>
+          <button class="rs-widget__system-btn">
+            <span class="rs-widget__system-dot rs-widget__system-dot--on"></span>
+            <span class="rs-widget__system-name">VAN</span>
+            <a class="rs-widget__system-more" href="#">more</a>
+          </button>
+          <button class="rs-widget__system-btn">
+            <span class="rs-widget__system-dot rs-widget__system-dot--on"></span>
+            <span class="rs-widget__system-name">Mobilize</span>
+            <a class="rs-widget__system-more" href="#">more</a>
+          </button>
+        </div>
+      </div>
+
+      <!-- Row 5: Directory (full width, bottom) -->
+      <div class="rs-widget rs-widget--directory rs-widget--full">
+        <h3 class="rs-widget__title">Group Directory</h3>
         <ul class="rs-widget__people-list">
           <li class="rs-widget__person">
             <span class="rs-widget__avatar" style="background:#7C3AED">N</span>
@@ -806,61 +849,6 @@
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
           Recruit More People
         </button>
-      </div>
-
-      <!-- Right-stacked widgets (beside directory) -->
-      <div class="rs-widget rs-widget--hours">
-        <h3 class="rs-widget__title">Hours Volunteered</h3>
-        <div class="rs-widget__goal">
-          <span class="rs-widget__big-number rs-widget__big-number--green">126</span>
-          <span class="rs-widget__goal-target">this month</span>
-        </div>
-        <div class="rs-widget__progress-bar"><div class="rs-widget__progress-fill rs-widget__progress-fill--green" style="width:63%"></div></div>
-      </div>
-
-      <div class="rs-widget rs-widget--systems">
-        <h3 class="rs-widget__title">Connected Systems</h3>
-        <div class="rs-widget__systems-row">
-          <button class="rs-widget__system-btn">
-            <span class="rs-widget__system-dot rs-widget__system-dot--on"></span>
-            <span class="rs-widget__system-name">Action Network</span>
-            <a class="rs-widget__system-more" href="#">more</a>
-          </button>
-          <button class="rs-widget__system-btn">
-            <span class="rs-widget__system-dot rs-widget__system-dot--on"></span>
-            <span class="rs-widget__system-name">VAN</span>
-            <a class="rs-widget__system-more" href="#">more</a>
-          </button>
-        </div>
-      </div>
-
-      <div class="rs-widget rs-widget--approval">
-        <h3 class="rs-widget__title">Submit for Approval</h3>
-        <p class="rs-widget__approval-desc">Send an idea or asset for review.</p>
-        <button class="rs-widget__approval-btn">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-          Send for Approval
-        </button>
-      </div>
-
-      <!-- Group Conversation (full width) -->
-      <div class="rs-widget rs-widget--chat-preview rs-widget--full">
-        <h3 class="rs-widget__title">Group Conversation</h3>
-        <div class="rs-widget__chat-messages">
-          <div class="rs-widget__chat-msg">
-            <span class="rs-widget__chat-author">@Sara Chen</span>
-            <span class="rs-widget__chat-text">Just confirmed the venue for Saturday's rally!</span>
-          </div>
-          <div class="rs-widget__chat-msg">
-            <span class="rs-widget__chat-author">@Marcus Rivera</span>
-            <span class="rs-widget__chat-text">Great work! I'll get the flyers distributed.</span>
-          </div>
-          <div class="rs-widget__chat-msg">
-            <span class="rs-widget__chat-author">@Ned Howey</span>
-            <span class="rs-widget__chat-text">Let's sync at 5 to review the run-of-show.</span>
-          </div>
-        </div>
-        <button class="rs-widget__chat-open-btn" id="group-msg-btn">Open Conversation</button>
       </div>
 
     </div>
@@ -927,7 +915,7 @@
         </svg>
       </div>
       <span class="topbar__org-name">People's Movement</span>
-      <span class="topbar__group-pill">Prospect Heights</span>
+      <span class="topbar__group-pill">Group Name</span>
     </div>
     <div class="topbar__brand">
       <img src="images/logo-color.png" alt="Tectonica.AI" class="topbar__logo">
