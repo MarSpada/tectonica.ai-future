@@ -1260,10 +1260,7 @@ body.group-chat-open .group-message-overlay {
 .category--featured .bot-card[data-category="fundraising"] .bot-card__circle { background: var(--circle-fundraising); }
 .category--featured .bot-card[data-category="admin"]       .bot-card__circle { background: var(--circle-admin); }
 
-/* No shimmer on featured cards */
-.category--featured .bot-card::after {
-  display: none;
-}
+/* BOT pill on featured cards — same as regular */
 
 /* Remove button on featured cards */
 .bot-card__remove {
@@ -1372,6 +1369,19 @@ body.group-chat-open .group-message-overlay {
   box-shadow: 0 2px 12px rgba(0, 0, 0, .06);
   gap: 6px;
   padding: 10px 8px 10px;
+}
+
+.bot-card::after {
+  content: 'BOT';
+  display: inline-block;
+  background: var(--text-primary);
+  color: #fff;
+  font-size: .58rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 6px;
+  letter-spacing: .06em;
+  margin-top: auto;
 }
 
 .bot-card:hover {
