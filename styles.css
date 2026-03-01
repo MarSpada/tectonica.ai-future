@@ -522,7 +522,7 @@ body::after {
   opacity: .55;
 }
 
-/* ─── Actions (full width) ─── */
+/* ─── Actions ─── */
 .rs-widget--actions {
   background: #f0e6ff;
 }
@@ -531,7 +531,7 @@ body::after {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
 }
 
 .rs-widget__action-item {
@@ -539,25 +539,27 @@ body::after {
   align-items: center;
   gap: 10px;
   font-size: .8rem;
-  color: rgba(0, 0, 0, .72);
+  background: #fff;
+  border-radius: 8px;
+  padding: 10px 14px;
 }
 
-.rs-widget__action-bullet {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent-purple);
-  flex-shrink: 0;
-}
-
-.rs-widget__action-text {
+.rs-widget__action-link {
   flex: 1;
+  font-size: .78rem;
+  font-weight: 600;
+  color: var(--accent-purple);
+  text-decoration: none;
+}
+
+.rs-widget__action-link:hover {
+  text-decoration: underline;
 }
 
 .rs-widget__due {
-  font-size: .68rem;
+  font-size: .7rem;
   font-weight: 600;
-  color: rgba(0, 0, 0, .38);
+  color: rgba(0, 0, 0, .45);
   flex-shrink: 0;
 }
 
@@ -634,6 +636,7 @@ body::after {
 
 /* ─── Per-Widget Colors ─── */
 .rs-widget--money        { background: #fff3e0; display: flex; flex-direction: column; }
+.rs-widget--approval     { display: flex; flex-direction: column; }
 .rs-widget--people       { background: #e0f2fe; }
 .rs-widget--hours        { background: #ecfdf5; }
 .rs-widget--systems      { background: #e8e8e8; }
@@ -741,8 +744,9 @@ body::after {
 }
 
 .rs-widget__btn--accent {
-  background: var(--accent-purple);
+  background: var(--accent-orange);
   color: #fff;
+  margin-top: auto;
 }
 
 .rs-widget__btn--accent:hover {
@@ -934,7 +938,7 @@ body::after {
   font-weight: 700;
   cursor: pointer;
   transition: background .15s;
-  margin-top: 6px;
+  margin-top: auto;
 }
 
 .rs-widget__approval-btn:hover {
@@ -942,22 +946,28 @@ body::after {
 }
 
 /* ─── Chat Preview ─── */
+.rs-widget--chat-preview {
+  display: flex;
+  flex-direction: column;
+}
+
 .rs-widget__chat-messages {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-bottom: 10px;
+  gap: 10px;
+  flex: 1;
 }
 
 .rs-widget__chat-msg {
-  font-size: .76rem;
-  line-height: 1.35;
+  font-size: .78rem;
+  line-height: 1.4;
   color: rgba(0, 0, 0, .65);
 }
 
 .rs-widget__chat-author {
   font-weight: 700;
   color: var(--accent-purple);
+  margin-right: 4px;
 }
 
 .rs-widget__chat-text {
@@ -965,21 +975,23 @@ body::after {
 }
 
 .rs-widget__chat-open-btn {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
   background: var(--accent-green);
   color: #fff;
   border: none;
-  border-radius: var(--radius-sm);
-  padding: 8px 12px;
+  border-radius: 8px;
+  padding: 10px 20px;
   font-family: var(--font);
-  font-size: .76rem;
+  font-size: .78rem;
   font-weight: 700;
   cursor: pointer;
   transition: background .15s;
-  width: 100%;
+  width: auto;
+  margin-top: auto;
+  align-self: flex-start;
 }
 
 .rs-widget__chat-open-btn:hover {
