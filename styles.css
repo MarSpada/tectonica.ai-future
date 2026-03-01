@@ -412,10 +412,20 @@ body::after {
   gap: 8px;
 }
 
+.topbar__home {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.topbar__home:hover .topbar__org-name { opacity: .75; }
+
 .topbar__org-name {
   font-size: .85rem;
   font-weight: 700;
   color: var(--text-primary);
+  transition: opacity .15s;
 }
 
 .topbar__group-pill {

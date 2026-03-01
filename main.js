@@ -290,9 +290,9 @@ function openBotChat(botName, imgSrc) {
     if (avatarEl) { avatarEl.src = imgSrc; avatarEl.alt = botName; }
   }
 
-  // Show Studio button only for Graphic Creation Bot
+  // Show Studio button only for Graphics Creation bot
   const studioBtn = document.getElementById('editor-toggle');
-  if (studioBtn) studioBtn.style.display = botName === 'Graphic Creation Bot' ? 'flex' : 'none';
+  if (studioBtn) studioBtn.style.display = botName === 'Graphics Creation' ? 'flex' : 'none';
 
   // Populate chat history sidebar
   populateChatHistory(botName);
@@ -527,6 +527,15 @@ if (mediaNav) {
     document.body.classList.add('media-mode');
     document.getElementById('media-view').style.display = 'flex';
     animateCardsIn('.media-gallery__card');
+  });
+}
+
+// ─── Topbar org name — return to dashboard ───
+const topbarHome = document.getElementById('topbar-home');
+if (topbarHome) {
+  topbarHome.addEventListener('click', e => {
+    e.preventDefault();
+    returnToDashboard();
   });
 }
 
